@@ -75,9 +75,9 @@ Partial Class MAIN
         'StatusStrip1
         '
         Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel3, Me.ToolStripStatusLabel2, Me.ToolStripStatusLabel1})
-        Me.StatusStrip1.Location = New System.Drawing.Point(0, 346)
+        Me.StatusStrip1.Location = New System.Drawing.Point(0, 339)
         Me.StatusStrip1.Name = "StatusStrip1"
-        Me.StatusStrip1.Size = New System.Drawing.Size(585, 22)
+        Me.StatusStrip1.Size = New System.Drawing.Size(584, 22)
         Me.StatusStrip1.TabIndex = 2
         Me.StatusStrip1.Text = "StatusStrip1"
         '
@@ -110,7 +110,7 @@ Partial Class MAIN
         Me.GroupBox1.Controls.Add(Me.Label2)
         Me.GroupBox1.Controls.Add(Me.Label3)
         Me.GroupBox1.Controls.Add(Me.Label1)
-        Me.GroupBox1.Location = New System.Drawing.Point(351, 12)
+        Me.GroupBox1.Location = New System.Drawing.Point(350, 12)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(222, 117)
         Me.GroupBox1.TabIndex = 3
@@ -168,7 +168,7 @@ Partial Class MAIN
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(183, 213)
+        Me.Button1.Location = New System.Drawing.Point(169, 190)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(108, 53)
         Me.Button1.TabIndex = 4
@@ -177,7 +177,7 @@ Partial Class MAIN
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(297, 213)
+        Me.Button2.Location = New System.Drawing.Point(283, 190)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(108, 53)
         Me.Button2.TabIndex = 5
@@ -186,7 +186,7 @@ Partial Class MAIN
         '
         'Button3
         '
-        Me.Button3.Location = New System.Drawing.Point(69, 213)
+        Me.Button3.Location = New System.Drawing.Point(55, 190)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(108, 53)
         Me.Button3.TabIndex = 6
@@ -214,7 +214,7 @@ Partial Class MAIN
         'Button6
         '
         Me.Button6.BackColor = System.Drawing.Color.DarkOrange
-        Me.Button6.Location = New System.Drawing.Point(69, 272)
+        Me.Button6.Location = New System.Drawing.Point(55, 249)
         Me.Button6.Name = "Button6"
         Me.Button6.Size = New System.Drawing.Size(336, 53)
         Me.Button6.TabIndex = 9
@@ -224,7 +224,7 @@ Partial Class MAIN
         '
         'Button7
         '
-        Me.Button7.Location = New System.Drawing.Point(452, 239)
+        Me.Button7.Location = New System.Drawing.Point(438, 216)
         Me.Button7.Name = "Button7"
         Me.Button7.Size = New System.Drawing.Size(108, 53)
         Me.Button7.TabIndex = 10
@@ -235,7 +235,7 @@ Partial Class MAIN
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(585, 368)
+        Me.ClientSize = New System.Drawing.Size(584, 361)
         Me.Controls.Add(Me.Button7)
         Me.Controls.Add(Me.Button6)
         Me.Controls.Add(Me.Button5)

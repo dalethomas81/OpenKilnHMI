@@ -43,4 +43,34 @@
         End If
         Main.SendModbusHoldingRegister(Main.MB_SCH_SEG_SELECTED, SegmentOut)
     End Sub
+
+    Private Sub CheckBox1_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox1.CheckedChanged
+        If CheckBox1.Checked Then
+            MAIN.SendModbusCoil(MAIN.MB_SCH_SEG_ENABLED, True)
+        Else
+            MAIN.SendModbusCoil(MAIN.MB_SCH_SEG_ENABLED, False)
+        End If
+    End Sub
+
+    Private Sub CheckBox2_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox2.CheckedChanged
+        If CheckBox2.Checked Then
+            MAIN.SendModbusCoil(MAIN.MB_SCH_SEG_HOLD_EN, True)
+        Else
+            MAIN.SendModbusCoil(MAIN.MB_SCH_SEG_HOLD_EN, False)
+        End If
+    End Sub
+
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+        MAIN.SendModbusCoil(MAIN.MB_CMD_WRITE_EEPROM, True)
+    End Sub
+
+    Private Sub Label4_Click(sender As Object, e As EventArgs) Handles Label4.Click
+        SCHEDULE_NAME.TextBox1.Text = MAIN.Kiln_01.Schedule.Name
+        SCHEDULE_NAME.Show()
+    End Sub
+
+    Private Sub Label5_Click(sender As Object, e As EventArgs) Handles Label5.Click
+        SEGMENT_NAME.TextBox1.Text = MAIN.Kiln_01.Schedule.Segment.Name
+        SEGMENT_NAME.Show()
+    End Sub
 End Class

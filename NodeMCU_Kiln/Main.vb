@@ -1,5 +1,6 @@
 ﻿Public Class MAIN
     Private SerialPort = "COM25"
+    Public Const MAX_STRING_LENGTH = 16
     ' coils (RW) 
     Public Const MB_CMD_SELECT_SCHEDULE As Integer = 1
     Public Const MB_CMD_START_PROFILE As Integer = 2
@@ -192,6 +193,22 @@
         End If
     End Sub
 
+    Public Sub SendModbusMultipleHoldingRegisters(ByVal Address As Integer, ByVal Values() As Integer)
+        Dim mb As New EasyModbus.ModbusClient(SerialPort)
+        mb.Baudrate = 115200
+        mb.Parity = IO.Ports.Parity.None
+        mb.UnitIdentifier = 1
+        mb.StopBits = IO.Ports.StopBits.One
+
+        If Not mb.Connected Then
+            mb.Connect()
+        End If
+        If mb.Connected Then
+            mb.WriteMultipleRegisters(Address, Values)
+            mb.Disconnect()
+        End If
+    End Sub
+
     Private Sub MapVariables()
         Dim TempRegArray(1) As Integer
         ' coils
@@ -327,8 +344,26 @@
             Button6.Visible = False
         End If
 
-        SCHEDULE.Label1.Text = "SCHEDULE: " & Kiln_01.ChangeSelectedSchedule & " - " & Kiln_01.Schedule.Name
-        SCHEDULE.Label2.Text = "SEGMENT: " & Kiln_01.Schedule.ChangeSelectedSegment & " - " & Kiln_01.Schedule.Segment.Name
+        SCHEDULE.Label4.Text = Kiln_01.ChangeSelectedSchedule & " - " & Kiln_01.Schedule.Name
+        SCHEDULE.Label5.Text = Kiln_01.Schedule.ChangeSelectedSegment & " - " & Kiln_01.Schedule.Segment.Name
+
+        If Kiln_01.Schedule.Segment.Enabled Then
+            SCHEDULE.CheckBox1.Checked = True
+        Else
+            SCHEDULE.CheckBox1.Checked = False
+        End If
+
+        If Kiln_01.Schedule.Segment.HoldEnabled Then
+            SCHEDULE.CheckBox2.Checked = True
+        Else
+            SCHEDULE.CheckBox2.Checked = False
+        End If
+
+        If Kiln_01.Status.EepromWritten Then
+            SCHEDULE.Label3.Visible = True
+        Else
+            SCHEDULE.Label3.Visible = False
+        End If
 
     End Sub
 

@@ -104,6 +104,18 @@
     <Compile Include="SCHEDULE.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="SCHEDULE_NAME.Designer.vb">
+      <DependentUpon>SCHEDULE_NAME.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SCHEDULE_NAME.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SEGMENT_NAME.Designer.vb">
+      <DependentUpon>SEGMENT_NAME.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SEGMENT_NAME.vb">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="MAIN.resx">
@@ -117,6 +129,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SCHEDULE.resx">
       <DependentUpon>SCHEDULE.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SCHEDULE_NAME.resx">
+      <DependentUpon>SCHEDULE_NAME.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SEGMENT_NAME.resx">
+      <DependentUpon>SEGMENT_NAME.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
