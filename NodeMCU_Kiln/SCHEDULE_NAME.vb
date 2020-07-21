@@ -1,5 +1,8 @@
 ﻿Public Class SCHEDULE_NAME
     Private Sub SCHEDULE_NAME_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        ' prevent resize
+        Me.MinimumSize = Me.Size
+        Me.MaximumSize = Me.Size
         TextBox1.MaxLength = MAIN.MAX_STRING_LENGTH
     End Sub
 

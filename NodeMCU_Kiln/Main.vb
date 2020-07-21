@@ -340,25 +340,27 @@
                 Button3.Text = "UNKNOWN"
                 Button3.BackColor = Color.Tomato
         End Select
-        Label1.Text = "SEGMENT: " & Kiln_01.Schedule.Segment.Name
-        Label2.Text = "SCHEDULE: " & Kiln_01.Command.SelectedSchedule & " - " & Kiln_01.Schedule.Name
-        Label6.Text = "REMAINING: " & Kiln_01.Schedule.RemainingHours & ":" & Kiln_01.Schedule.RemainingMinutes & ":" & Kiln_01.Schedule.RemainingSeconds
-        Label5.Text = "SETPOINT: " & Math.Round(Kiln_01.Command.Setpoint, 2) & " F"
-        Label3.Text = "UPPER TEMP: " & Math.Round(Kiln_01.TemperatureController.Upper.Temperature, 2) & " F"
-        Label4.Text = "LOWER TEMP: " & Math.Round(Kiln_01.TemperatureController.Lower.Temperature, 2) & " F"
+        Label14.Text = Kiln_01.Schedule.Segment.Name
+        Label12.Text = Kiln_01.Command.SelectedSchedule & " - " & Kiln_01.Schedule.Name
+        Label9.Text = Kiln_01.Schedule.RemainingHours.ToString("D2") & ":" &
+                    Kiln_01.Schedule.RemainingMinutes.ToString("D2") & ":" &
+                    Kiln_01.Schedule.RemainingSeconds.ToString("D2")
+        Label10.Text = Math.Round(Kiln_01.Command.Setpoint, 2) & " F"
+        Label13.Text = Math.Round(Kiln_01.TemperatureController.Upper.Temperature, 2) & " F"
+        Label11.Text = Math.Round(Kiln_01.TemperatureController.Lower.Temperature, 2) & " F"
         Select Case Kiln_01.Status.SegmentState
             Case 0
-                Label7.Text = "STATE: IDLE"
+                Label8.Text = "IDLE"
             Case 1
-                Label7.Text = "STATE: RAMP"
+                Label8.Text = "RAMP"
             Case 2
-                Label7.Text = "STATE: SOAK"
+                Label8.Text = "SOAK"
             Case 3
-                Label7.Text = "STATE: HOLD"
+                Label8.Text = "HOLD"
             Case 4
-                Label7.Text = "STATE: INIT"
+                Label8.Text = "INIT"
             Case 5
-                Label7.Text = "STATE: START"
+                Label8.Text = "START"
             Case Else
 
         End Select
@@ -371,17 +373,19 @@
         SCHEDULE.Label4.Text = Kiln_01.ChangeSelectedSchedule & " - " & Kiln_01.Schedule.Name
         SCHEDULE.Label5.Text = Kiln_01.Schedule.ChangeSelectedSegment & " - " & Kiln_01.Schedule.Segment.Name
 
-        If Kiln_01.Schedule.Segment.Enabled Then
-            SCHEDULE.CheckBox1.Checked = True
-        Else
-            SCHEDULE.CheckBox1.Checked = False
-        End If
+        'If Kiln_01.Schedule.Segment.Enabled Then
+        '    SCHEDULE.CheckBox1.Checked = True
+        'Else
+        '    SCHEDULE.CheckBox1.Checked = False
+        'End If
+        SCHEDULE.CheckBox1.Checked = Kiln_01.Schedule.Segment.Enabled
 
-        If Kiln_01.Schedule.Segment.HoldEnabled Then
-            SCHEDULE.CheckBox2.Checked = True
-        Else
-            SCHEDULE.CheckBox2.Checked = False
-        End If
+        'If Kiln_01.Schedule.Segment.HoldEnabled Then
+        '    SCHEDULE.CheckBox2.Checked = True
+        'Else
+        '    SCHEDULE.CheckBox2.Checked = False
+        'End If
+        SCHEDULE.CheckBox2.Checked = Kiln_01.Schedule.Segment.HoldEnabled
 
         If Kiln_01.Status.EepromWritten Then
             SCHEDULE.Label3.Visible = True
@@ -392,6 +396,8 @@
         SCHEDULE.Label9.Text = Kiln_01.Schedule.Segment.Setpoint
         SCHEDULE.Label10.Text = Kiln_01.Schedule.Segment.RampRate
         SCHEDULE.Label11.Text = Kiln_01.Schedule.Segment.SoakTime
+
+        SETTINGS.CheckBox1.Checked = Kiln_01.Command.ThermalOverride
 
     End Sub
 
@@ -450,5 +456,10 @@
         ' prevent resize
         Me.MinimumSize = Me.Size
         Me.MaximumSize = Me.Size
+    End Sub
+
+    Private Sub Button8_Click(sender As Object, e As EventArgs) Handles Button8.Click
+        'SETTINGS.CheckBox1.Checked = Kiln_01.Command.ThermalOverride
+        SETTINGS.Show()
     End Sub
 End Class

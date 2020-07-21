@@ -45,19 +45,21 @@
     End Sub
 
     Private Sub CheckBox1_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox1.CheckedChanged
-        If CheckBox1.Checked Then
-            MAIN.SendModbusCoil(MAIN.MB_SCH_SEG_ENABLED, True)
-        Else
-            MAIN.SendModbusCoil(MAIN.MB_SCH_SEG_ENABLED, False)
-        End If
+        'If CheckBox1.Checked Then
+        '    MAIN.SendModbusCoil(MAIN.MB_SCH_SEG_ENABLED, True)
+        'Else
+        '    MAIN.SendModbusCoil(MAIN.MB_SCH_SEG_ENABLED, False)
+        'End If
+        MAIN.SendModbusCoil(MAIN.MB_SCH_SEG_ENABLED, CheckBox1.Checked)
     End Sub
 
     Private Sub CheckBox2_CheckedChanged(sender As Object, e As EventArgs) Handles CheckBox2.CheckedChanged
-        If CheckBox2.Checked Then
-            MAIN.SendModbusCoil(MAIN.MB_SCH_SEG_HOLD_EN, True)
-        Else
-            MAIN.SendModbusCoil(MAIN.MB_SCH_SEG_HOLD_EN, False)
-        End If
+        'If CheckBox2.Checked Then
+        '    MAIN.SendModbusCoil(MAIN.MB_SCH_SEG_HOLD_EN, True)
+        'Else
+        '    MAIN.SendModbusCoil(MAIN.MB_SCH_SEG_HOLD_EN, False)
+        'End If
+        MAIN.SendModbusCoil(MAIN.MB_SCH_SEG_HOLD_EN, CheckBox2.Checked)
     End Sub
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
@@ -79,5 +81,11 @@
 
     Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
         Me.Close()
+    End Sub
+
+    Private Sub SCHEDULE_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        ' prevent resize
+        Me.MinimumSize = Me.Size
+        Me.MaximumSize = Me.Size
     End Sub
 End Class
