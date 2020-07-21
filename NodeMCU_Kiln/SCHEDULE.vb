@@ -71,6 +71,9 @@
 
     Private Sub Label5_Click(sender As Object, e As EventArgs) Handles Label5.Click
         SEGMENT_NAME.TextBox1.Text = MAIN.Kiln_01.Schedule.Segment.Name
+        SEGMENT_NAME.NumericUpDown1.Value = MAIN.Kiln_01.Schedule.Segment.Setpoint
+        SEGMENT_NAME.NumericUpDown2.Value = MAIN.Kiln_01.Schedule.Segment.RampRate
+        SEGMENT_NAME.NumericUpDown3.Value = MAIN.Kiln_01.Schedule.Segment.SoakTime
         SEGMENT_NAME.Show()
     End Sub
 End Class

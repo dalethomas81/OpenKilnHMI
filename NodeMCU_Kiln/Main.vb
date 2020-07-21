@@ -365,6 +365,10 @@
             SCHEDULE.Label3.Visible = False
         End If
 
+        SCHEDULE.Label9.Text = Kiln_01.Schedule.Segment.Setpoint
+        SCHEDULE.Label10.Text = Kiln_01.Schedule.Segment.RampRate
+        SCHEDULE.Label11.Text = Kiln_01.Schedule.Segment.SoakTime
+
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
