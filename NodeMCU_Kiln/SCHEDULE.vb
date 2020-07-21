@@ -76,4 +76,8 @@
         SEGMENT_NAME.NumericUpDown3.Value = MAIN.Kiln_01.Schedule.Segment.SoakTime
         SEGMENT_NAME.Show()
     End Sub
+
+    Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
+        Me.Close()
+    End Sub
 End Class
