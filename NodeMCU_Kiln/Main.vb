@@ -311,6 +311,7 @@
         SendModbusCoil(MB_CMD_STOP_PROFILE, True)
     End Sub
 
+    ' change mode
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
         Dim ModeOut As Integer = (Kiln_01.Mode + 1) Mod 4
         If ModeOut <= 0 Then ' 0 is not a valid mode - filter it and anything below
@@ -319,4 +320,25 @@
         SendModbusHoldingRegister(MB_MODE, ModeOut)
     End Sub
 
+    ' increment selected schedule
+    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
+        Dim ScheduleOut As Integer = (Kiln_01.Command.SelectedSchedule + 1) Mod (Kiln_01.NumberOfSchedules)
+        If ScheduleOut <= 0 Then
+            ScheduleOut = 0
+        ElseIf ScheduleOut >= Kiln_01.NumberOfSchedules Then
+            ScheduleOut = Kiln_01.NumberOfSchedules - 1
+        End If
+        SendModbusHoldingRegister(MB_CMD_SELECTED_SCHEDULE, ScheduleOut)
+    End Sub
+
+    ' decrement selected schedule
+    Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
+        Dim ScheduleOut As Integer = (Kiln_01.Command.SelectedSchedule - 1) Mod Kiln_01.NumberOfSchedules
+        If ScheduleOut < 0 Then
+            ScheduleOut = Kiln_01.NumberOfSchedules - 1
+        ElseIf ScheduleOut >= Kiln_01.NumberOfSchedules Then
+            ScheduleOut = Kiln_01.NumberOfSchedules - 1
+        End If
+        SendModbusHoldingRegister(MB_CMD_SELECTED_SCHEDULE, ScheduleOut)
+    End Sub
 End Class
