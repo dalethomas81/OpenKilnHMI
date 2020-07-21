@@ -300,6 +300,10 @@
         End Select
         Label1.Text = "SEGMENT: " & Kiln_01.Schedule.Segment.Name
         Label2.Text = "SCHEDULE: " & Kiln_01.Command.SelectedSchedule & "-" & Kiln_01.Schedule.Name
+        Label6.Text = "REMAINING: " & Kiln_01.Schedule.RemainingHours & ":" & Kiln_01.Schedule.RemainingMinutes & ":" & Kiln_01.Schedule.RemainingSeconds
+        Label5.Text = "SETPOINT: " & Kiln_01.Command.Setpoint
+        Label3.Text = "UPPER TEMP: " & Kiln_01.TemperatureController.Upper.Temperature & "F"
+        Label4.Text = "LOWER TEMP: " & Kiln_01.TemperatureController.Lower.Temperature & "F"
 
     End Sub
 
