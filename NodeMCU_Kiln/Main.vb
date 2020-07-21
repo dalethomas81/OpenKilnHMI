@@ -49,6 +49,7 @@
     End Structure
 
     Structure Kiln_Status
+        Dim Heartbeat As Integer
         Dim HoldReleaseRequest As Boolean
         Dim SafetyOk As Boolean
         Dim InProcess As Boolean
@@ -75,7 +76,6 @@
 
     Structure Kiln
         Dim Mode As Integer
-        Dim Heartbeat As Integer
         Dim NumberOfSchedules As Integer
         Dim ChangeSelectedSchedule As Integer
         Dim Schedule As Kiln_Schedule
@@ -154,7 +154,7 @@
         TempRegArray(0) = HoldingRegistersIn(14)
         TempRegArray(1) = HoldingRegistersIn(15)
         Kiln_01.TemperatureController.Lower.D = EasyModbus.ModbusClient.ConvertRegistersToFloat(TempRegArray)
-        Kiln_01.Schedule.Name = EasyModbus.ModbusClient.ConvertRegistersToString(HoldingRegistersIn, 16, 16)
+        Kiln_01.Schedule.Segment.Name = EasyModbus.ModbusClient.ConvertRegistersToString(HoldingRegistersIn, 16, 16)
         Kiln_01.Schedule.Name = EasyModbus.ModbusClient.ConvertRegistersToString(HoldingRegistersIn, 24, 16)
         TempRegArray(0) = HoldingRegistersIn(32)
         TempRegArray(1) = HoldingRegistersIn(33)
@@ -164,7 +164,7 @@
         Kiln_01.Schedule.ChangeSelectedSegment = HoldingRegistersIn(36)
         Kiln_01.ChangeSelectedSchedule = HoldingRegistersIn(37)
         ' input registers
-        Kiln_01.Heartbeat = InputRegistersIn(0)
+        Kiln_01.Status.Heartbeat = InputRegistersIn(0)
         Kiln_01.Schedule.RemainingHours = InputRegistersIn(1)
         Kiln_01.Schedule.RemainingMinutes = InputRegistersIn(2)
         Kiln_01.Schedule.RemainingSeconds = InputRegistersIn(3)
@@ -188,7 +188,30 @@
     End Sub
 
     Private Sub UpdateUI()
-        Label1.Text = Kiln_01.Heartbeat
+        ToolStripStatusLabel1.Text = "Heartbeat: " & Kiln_01.Status.Heartbeat
+        If Kiln_01.Status.SafetyOk Then
+            ToolStripStatusLabel2.Text = "Safety Circuit Ok"
+            ToolStripStatusLabel2.BackColor = Color.YellowGreen
+        Else
+            ToolStripStatusLabel2.Text = "Safety Circuit Not Ok"
+            ToolStripStatusLabel2.BackColor = Color.Tomato
+        End If
+        Select Case Kiln_01.Mode
+            Case 1  ' auto
+                ToolStripStatusLabel3.Text = "Mode: Automatic"
+                ToolStripStatusLabel3.BackColor = Color.YellowGreen
+            Case 2  ' manual
+                ToolStripStatusLabel3.Text = "Mode: Manual"
+                ToolStripStatusLabel3.BackColor = Color.SkyBlue
+            Case 3  ' simulation
+                ToolStripStatusLabel3.Text = "Mode: Simulation"
+                ToolStripStatusLabel3.BackColor = Color.DarkOrange
+            Case Else
+                ToolStripStatusLabel3.Text = "Mode: unknown"
+                ToolStripStatusLabel3.BackColor = Color.Tomato
+        End Select
+        Label1.Text = "Segment: " & Kiln_01.Schedule.Segment.Name
+        Label2.Text = "Schedule: " & Kiln_01.Schedule.Name
     End Sub
 
 End Class
