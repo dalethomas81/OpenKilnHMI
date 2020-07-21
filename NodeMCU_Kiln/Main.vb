@@ -66,6 +66,9 @@
     Dim InputRegistersIn(InputRegistersCount) As Integer
     Dim InputRegistersOut(InputRegistersCount) As Integer
 
+    Dim HeartbeatLast As Integer = 0
+    Dim HeartbeatOk As Boolean = False
+
     Structure Kiln_Schedule_Segment
         Dim Name As String
         Dim Enabled As Boolean
@@ -286,6 +289,20 @@
     End Sub
 
     Private Sub UpdateUI()
+
+        If Kiln_01.Status.Heartbeat = HeartbeatLast Then
+            Timer2.Enabled = True
+        Else
+            Timer2.Enabled = False
+            HeartbeatOk = True
+        End If
+        HeartbeatLast = Kiln_01.Status.Heartbeat
+
+        If HeartbeatOk Then
+            ToolStripStatusLabel1.BackColor = Color.YellowGreen
+        Else
+            ToolStripStatusLabel1.BackColor = Color.Tomato
+        End If
         ToolStripStatusLabel1.Text = "HEARTBEAT: " & Kiln_01.Status.Heartbeat
         If Kiln_01.Status.SafetyOk Then
             ToolStripStatusLabel2.Text = "SAFETY CIRCUIT OK"
@@ -293,6 +310,13 @@
         Else
             ToolStripStatusLabel2.Text = "SAFETY CIRCUIT NOT OK"
             ToolStripStatusLabel2.BackColor = Color.Tomato
+        End If
+        If Kiln_01.Status.ThermalRunaway Then
+            ToolStripStatusLabel4.Text = "THERMAL RUNAWAY DETECTED"
+            ToolStripStatusLabel4.BackColor = Color.Tomato
+        Else
+            ToolStripStatusLabel4.Text = "THERMAL MONITORING OK"
+            ToolStripStatusLabel4.BackColor = Color.YellowGreen
         End If
         Select Case Kiln_01.Mode
             Case 1  ' auto
@@ -416,5 +440,15 @@
 
     Private Sub Button7_Click(sender As Object, e As EventArgs) Handles Button7.Click
         SCHEDULE.Show()
+    End Sub
+
+    Private Sub Timer2_Tick(sender As Object, e As EventArgs) Handles Timer2.Tick
+        HeartbeatOk = False
+    End Sub
+
+    Private Sub MAIN_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        ' prevent resize
+        Me.MinimumSize = Me.Size
+        Me.MaximumSize = Me.Size
     End Sub
 End Class

@@ -29,6 +29,7 @@ Partial Class MAIN
         Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.ToolStripStatusLabel3 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolStripStatusLabel2 = New System.Windows.Forms.ToolStripStatusLabel()
+        Me.ToolStripStatusLabel4 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.Label7 = New System.Windows.Forms.Label()
@@ -43,6 +44,7 @@ Partial Class MAIN
         Me.Button5 = New System.Windows.Forms.Button()
         Me.Button6 = New System.Windows.Forms.Button()
         Me.Button7 = New System.Windows.Forms.Button()
+        Me.Timer2 = New System.Windows.Forms.Timer(Me.components)
         Me.StatusStrip1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
@@ -74,30 +76,42 @@ Partial Class MAIN
         '
         'StatusStrip1
         '
-        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel3, Me.ToolStripStatusLabel2, Me.ToolStripStatusLabel1})
-        Me.StatusStrip1.Location = New System.Drawing.Point(0, 339)
+        Me.StatusStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripStatusLabel3, Me.ToolStripStatusLabel2, Me.ToolStripStatusLabel4, Me.ToolStripStatusLabel1})
+        Me.StatusStrip1.Location = New System.Drawing.Point(0, 337)
         Me.StatusStrip1.Name = "StatusStrip1"
-        Me.StatusStrip1.Size = New System.Drawing.Size(584, 22)
+        Me.StatusStrip1.Size = New System.Drawing.Size(584, 24)
         Me.StatusStrip1.TabIndex = 2
         Me.StatusStrip1.Text = "StatusStrip1"
         '
         'ToolStripStatusLabel3
         '
         Me.ToolStripStatusLabel3.Name = "ToolStripStatusLabel3"
-        Me.ToolStripStatusLabel3.Size = New System.Drawing.Size(47, 17)
+        Me.ToolStripStatusLabel3.Size = New System.Drawing.Size(47, 19)
         Me.ToolStripStatusLabel3.Text = "MODE: "
         '
         'ToolStripStatusLabel2
         '
         Me.ToolStripStatusLabel2.BackColor = System.Drawing.SystemColors.Control
+        Me.ToolStripStatusLabel2.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left
+        Me.ToolStripStatusLabel2.BorderStyle = System.Windows.Forms.Border3DStyle.Etched
         Me.ToolStripStatusLabel2.Name = "ToolStripStatusLabel2"
-        Me.ToolStripStatusLabel2.Size = New System.Drawing.Size(94, 17)
+        Me.ToolStripStatusLabel2.Size = New System.Drawing.Size(98, 19)
         Me.ToolStripStatusLabel2.Text = "SAFETY CIRCUIT"
+        '
+        'ToolStripStatusLabel4
+        '
+        Me.ToolStripStatusLabel4.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left
+        Me.ToolStripStatusLabel4.BorderStyle = System.Windows.Forms.Border3DStyle.Etched
+        Me.ToolStripStatusLabel4.Name = "ToolStripStatusLabel4"
+        Me.ToolStripStatusLabel4.Size = New System.Drawing.Size(122, 19)
+        Me.ToolStripStatusLabel4.Text = "THERMAL MONITOR"
         '
         'ToolStripStatusLabel1
         '
+        Me.ToolStripStatusLabel1.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left
+        Me.ToolStripStatusLabel1.BorderStyle = System.Windows.Forms.Border3DStyle.Etched
         Me.ToolStripStatusLabel1.Name = "ToolStripStatusLabel1"
-        Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(76, 17)
+        Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(80, 19)
         Me.ToolStripStatusLabel1.Text = "HEARTBEAT: "
         '
         'GroupBox1
@@ -231,6 +245,10 @@ Partial Class MAIN
         Me.Button7.Text = "SCHEDULES"
         Me.Button7.UseVisualStyleBackColor = True
         '
+        'Timer2
+        '
+        Me.Timer2.Interval = 1500
+        '
         'MAIN
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -276,4 +294,6 @@ Partial Class MAIN
     Friend WithEvents Label7 As Label
     Friend WithEvents Button6 As Button
     Friend WithEvents Button7 As Button
+    Friend WithEvents ToolStripStatusLabel4 As ToolStripStatusLabel
+    Friend WithEvents Timer2 As Timer
 End Class
