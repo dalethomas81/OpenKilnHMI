@@ -1,52 +1,53 @@
-﻿Public Class Main
+﻿Public Class MAIN
+    Private SerialPort = "COM25"
     ' coils (RW) 
-    Private Const MB_CMD_SELECT_SCHEDULE As Integer = 1
-    Private Const MB_CMD_START_PROFILE As Integer = 2
-    Private Const MB_CMD_STOP_PROFILE As Integer = 3
-    Private Const MB_CMD_HOLD_RELEASE As Integer = 4
-    Private Const MB_CMD_THERM_OVERRIDE As Integer = 5
-    Private Const MB_CMD_WRITE_EEPROM As Integer = 6
-    Private Const MB_SCH_SEG_ENABLED As Integer = 7
-    Private Const MB_SCH_SEG_HOLD_EN As Integer = 8
+    Public Const MB_CMD_SELECT_SCHEDULE As Integer = 1
+    Public Const MB_CMD_START_PROFILE As Integer = 2
+    Public Const MB_CMD_STOP_PROFILE As Integer = 3
+    Public Const MB_CMD_HOLD_RELEASE As Integer = 4
+    Public Const MB_CMD_THERM_OVERRIDE As Integer = 5
+    Public Const MB_CMD_WRITE_EEPROM As Integer = 6
+    Public Const MB_SCH_SEG_ENABLED As Integer = 7
+    Public Const MB_SCH_SEG_HOLD_EN As Integer = 8
     ' input status (R)
-    Private Const MB_STS_SSR_01 As Integer = 1
-    Private Const MB_STS_SSR_02 As Integer = 2
-    Private Const MB_STS_RELEASE_REQ As Integer = 3
-    Private Const MB_STS_SAFETY_OK As Integer = 4
-    Private Const MB_STS_IN_PROCESS As Integer = 5
-    Private Const MB_STS_THERMAL_RUNAWAY As Integer = 6
-    Private Const MB_STS_EEPROM_WRITTEN As Integer = 7
+    Public Const MB_STS_SSR_01 As Integer = 1
+    Public Const MB_STS_SSR_02 As Integer = 2
+    Public Const MB_STS_RELEASE_REQ As Integer = 3
+    Public Const MB_STS_SAFETY_OK As Integer = 4
+    Public Const MB_STS_IN_PROCESS As Integer = 5
+    Public Const MB_STS_THERMAL_RUNAWAY As Integer = 6
+    Public Const MB_STS_EEPROM_WRITTEN As Integer = 7
     ' holding registers (RW) 16 bit
-    Private Const MB_MODE As Integer = 1
-    Private Const MB_CMD_SELECTED_SCHEDULE As Integer = 2
-    Private Const MB_CMD_SETPOINT As Integer = 3
-    Private Const MB_PID_P_01 As Integer = 5
-    Private Const MB_PID_I_01 As Integer = 7
-    Private Const MB_PID_D_01 As Integer = 9
-    Private Const MB_PID_P_02 As Integer = 11
-    Private Const MB_PID_I_02 As Integer = 13
-    Private Const MB_PID_D_02 As Integer = 15
-    Private Const MB_SCH_NAME As Integer = 17
-    Private Const MB_SCH_SEG_NAME As Integer = 25
-    Private Const MB_SCH_SEG_SETPOINT As Integer = 33
-    Private Const MB_SCH_SEG_RAMP_RATE As Integer = 35
-    Private Const MB_SCH_SEG_SOAK_TIME As Integer = 36
-    Private Const MB_SCH_SEG_SELECTED As Integer = 37
-    Private Const MB_SCH_SELECTED As Integer = 38
+    Public Const MB_MODE As Integer = 1
+    Public Const MB_CMD_SELECTED_SCHEDULE As Integer = 2
+    Public Const MB_CMD_SETPOINT As Integer = 3
+    Public Const MB_PID_P_01 As Integer = 5
+    Public Const MB_PID_I_01 As Integer = 7
+    Public Const MB_PID_D_01 As Integer = 9
+    Public Const MB_PID_P_02 As Integer = 11
+    Public Const MB_PID_I_02 As Integer = 13
+    Public Const MB_PID_D_02 As Integer = 15
+    Public Const MB_SCH_NAME As Integer = 17
+    Public Const MB_SCH_SEG_NAME As Integer = 25
+    Public Const MB_SCH_SEG_SETPOINT As Integer = 33
+    Public Const MB_SCH_SEG_RAMP_RATE As Integer = 35
+    Public Const MB_SCH_SEG_SOAK_TIME As Integer = 36
+    Public Const MB_SCH_SEG_SELECTED As Integer = 37
+    Public Const MB_SCH_SELECTED As Integer = 38
     ' input registers (R) 16 bit
-    Private Const MB_HEARTBEAT As Integer = 1
-    Private Const MB_STS_REMAINING_TIME_H As Integer = 2
-    Private Const MB_STS_REMAINING_TIME_M As Integer = 3
-    Private Const MB_STS_REMAINING_TIME_S As Integer = 4
-    Private Const MB_STS_TEMPERATURE_01 As Integer = 5
-    Private Const MB_STS_TEMPERATURE_02 As Integer = 7
-    Private Const MB_STS_PID_01_OUTPUT As Integer = 9
-    Private Const MB_STS_PID_02_OUTPUT As Integer = 11
-    Private Const MB_NUMBER_OF_SCHEDULES As Integer = 13
-    Private Const MB_NUMBER_OF_SEGMENTS As Integer = 14
-    Private Const MB_STS_SEGMENT_STATE As Integer = 15
-    Private Const MB_STS_SEGMENT_NAME As Integer = 16
-    Private Const MB_STS_SCHEDULE_NAME As Integer = 24
+    Public Const MB_HEARTBEAT As Integer = 1
+    Public Const MB_STS_REMAINING_TIME_H As Integer = 2
+    Public Const MB_STS_REMAINING_TIME_M As Integer = 3
+    Public Const MB_STS_REMAINING_TIME_S As Integer = 4
+    Public Const MB_STS_TEMPERATURE_01 As Integer = 5
+    Public Const MB_STS_TEMPERATURE_02 As Integer = 7
+    Public Const MB_STS_PID_01_OUTPUT As Integer = 9
+    Public Const MB_STS_PID_02_OUTPUT As Integer = 11
+    Public Const MB_NUMBER_OF_SCHEDULES As Integer = 13
+    Public Const MB_NUMBER_OF_SEGMENTS As Integer = 14
+    Public Const MB_STS_SEGMENT_STATE As Integer = 15
+    Public Const MB_STS_SEGMENT_NAME As Integer = 16
+    Public Const MB_STS_SCHEDULE_NAME As Integer = 24
 
     Dim CoilsCount As Int16 = 10
     Dim CoilsIn(CoilsCount) As Boolean
@@ -132,7 +133,7 @@
         Dim TemperatureController As Kiln_TemperatureController
     End Structure
 
-    Dim Kiln_01 As New Kiln
+    Public Kiln_01 As New Kiln
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
         GetModbusData()
@@ -141,7 +142,7 @@
     End Sub
 
     Private Sub GetModbusData()
-        Dim mb As New EasyModbus.ModbusClient("COM26")
+        Dim mb As New EasyModbus.ModbusClient(SerialPort)
         mb.Baudrate = 115200
         mb.Parity = IO.Ports.Parity.None
         mb.UnitIdentifier = 1
@@ -159,8 +160,8 @@
         End If
     End Sub
 
-    Private Sub SendModbusCoil(ByVal Address As Integer, ByVal Value As Boolean)
-        Dim mb As New EasyModbus.ModbusClient("COM26")
+    Public Sub SendModbusCoil(ByVal Address As Integer, ByVal Value As Boolean)
+        Dim mb As New EasyModbus.ModbusClient(SerialPort)
         mb.Baudrate = 115200
         mb.Parity = IO.Ports.Parity.None
         mb.UnitIdentifier = 1
@@ -175,8 +176,8 @@
         End If
     End Sub
 
-    Private Sub SendModbusHoldingRegister(ByVal Address As Integer, ByVal Value As Integer)
-        Dim mb As New EasyModbus.ModbusClient("COM26")
+    Public Sub SendModbusHoldingRegister(ByVal Address As Integer, ByVal Value As Integer)
+        Dim mb As New EasyModbus.ModbusClient(SerialPort)
         mb.Baudrate = 115200
         mb.Parity = IO.Ports.Parity.None
         mb.UnitIdentifier = 1
@@ -301,9 +302,30 @@
         Label1.Text = "SEGMENT: " & Kiln_01.Schedule.Segment.Name
         Label2.Text = "SCHEDULE: " & Kiln_01.Command.SelectedSchedule & "-" & Kiln_01.Schedule.Name
         Label6.Text = "REMAINING: " & Kiln_01.Schedule.RemainingHours & ":" & Kiln_01.Schedule.RemainingMinutes & ":" & Kiln_01.Schedule.RemainingSeconds
-        Label5.Text = "SETPOINT: " & Kiln_01.Command.Setpoint
-        Label3.Text = "UPPER TEMP: " & Kiln_01.TemperatureController.Upper.Temperature & "F"
-        Label4.Text = "LOWER TEMP: " & Kiln_01.TemperatureController.Lower.Temperature & "F"
+        Label5.Text = "SETPOINT: " & Math.Round(Kiln_01.Command.Setpoint, 2) & " F"
+        Label3.Text = "UPPER TEMP: " & Math.Round(Kiln_01.TemperatureController.Upper.Temperature, 2) & " F"
+        Label4.Text = "LOWER TEMP: " & Math.Round(Kiln_01.TemperatureController.Lower.Temperature, 2) & " F"
+        Select Case Kiln_01.Status.SegmentState
+            Case 0
+                Label7.Text = "STATE: IDLE"
+            Case 1
+                Label7.Text = "STATE: RAMP"
+            Case 2
+                Label7.Text = "STATE: SOAK"
+            Case 3
+                Label7.Text = "STATE: HOLD"
+            Case 4
+                Label7.Text = "STATE: INIT"
+            Case 5
+                Label7.Text = "STATE: START"
+            Case Else
+
+        End Select
+        If Kiln_01.Status.HoldReleaseRequest Then
+            Button6.Visible = True
+        Else
+            Button6.Visible = False
+        End If
 
     End Sub
 
@@ -326,7 +348,7 @@
 
     ' increment selected schedule
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
-        Dim ScheduleOut As Integer = (Kiln_01.Command.SelectedSchedule + 1) Mod (Kiln_01.NumberOfSchedules)
+        Dim ScheduleOut As Integer = (Kiln_01.Command.SelectedSchedule + 1) Mod Kiln_01.NumberOfSchedules
         If ScheduleOut <= 0 Then
             ScheduleOut = 0
         ElseIf ScheduleOut >= Kiln_01.NumberOfSchedules Then
@@ -344,5 +366,9 @@
             ScheduleOut = Kiln_01.NumberOfSchedules - 1
         End If
         SendModbusHoldingRegister(MB_CMD_SELECTED_SCHEDULE, ScheduleOut)
+    End Sub
+
+    Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
+        SendModbusCoil(MB_CMD_HOLD_RELEASE, True)
     End Sub
 End Class
