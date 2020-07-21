@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
-Partial Class Main
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
+Partial Class MAIN
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class Main
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.Timer1 = New System.Windows.Forms.Timer(Me.components)
@@ -31,6 +31,7 @@ Partial Class Main
         Me.ToolStripStatusLabel2 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.Label7 = New System.Windows.Forms.Label()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
@@ -40,8 +41,8 @@ Partial Class Main
         Me.Button3 = New System.Windows.Forms.Button()
         Me.Button4 = New System.Windows.Forms.Button()
         Me.Button5 = New System.Windows.Forms.Button()
-        Me.Label7 = New System.Windows.Forms.Label()
         Me.Button6 = New System.Windows.Forms.Button()
+        Me.Button7 = New System.Windows.Forms.Button()
         Me.StatusStrip1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
@@ -115,6 +116,16 @@ Partial Class Main
         Me.GroupBox1.TabIndex = 3
         Me.GroupBox1.TabStop = False
         '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Location = New System.Drawing.Point(6, 42)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(48, 13)
+        Me.Label7.TabIndex = 12
+        Me.Label7.Text = "STATE: "
+        Me.Label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
         'Label6
         '
         Me.Label6.AutoSize = True
@@ -157,7 +168,7 @@ Partial Class Main
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(242, 210)
+        Me.Button1.Location = New System.Drawing.Point(183, 213)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(108, 53)
         Me.Button1.TabIndex = 4
@@ -166,7 +177,7 @@ Partial Class Main
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(356, 210)
+        Me.Button2.Location = New System.Drawing.Point(297, 213)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(108, 53)
         Me.Button2.TabIndex = 5
@@ -175,7 +186,7 @@ Partial Class Main
         '
         'Button3
         '
-        Me.Button3.Location = New System.Drawing.Point(128, 210)
+        Me.Button3.Location = New System.Drawing.Point(69, 213)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(108, 53)
         Me.Button3.TabIndex = 6
@@ -200,20 +211,10 @@ Partial Class Main
         Me.Button5.Text = "<-"
         Me.Button5.UseVisualStyleBackColor = True
         '
-        'Label7
-        '
-        Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(6, 42)
-        Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(48, 13)
-        Me.Label7.TabIndex = 12
-        Me.Label7.Text = "STATE: "
-        Me.Label7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        '
         'Button6
         '
         Me.Button6.BackColor = System.Drawing.Color.DarkOrange
-        Me.Button6.Location = New System.Drawing.Point(128, 269)
+        Me.Button6.Location = New System.Drawing.Point(69, 272)
         Me.Button6.Name = "Button6"
         Me.Button6.Size = New System.Drawing.Size(336, 53)
         Me.Button6.TabIndex = 9
@@ -221,11 +222,21 @@ Partial Class Main
         Me.Button6.UseVisualStyleBackColor = False
         Me.Button6.Visible = False
         '
-        'Main
+        'Button7
+        '
+        Me.Button7.Location = New System.Drawing.Point(452, 239)
+        Me.Button7.Name = "Button7"
+        Me.Button7.Size = New System.Drawing.Size(108, 53)
+        Me.Button7.TabIndex = 10
+        Me.Button7.Text = "SCHEDULES"
+        Me.Button7.UseVisualStyleBackColor = True
+        '
+        'MAIN
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(585, 368)
+        Me.Controls.Add(Me.Button7)
         Me.Controls.Add(Me.Button6)
         Me.Controls.Add(Me.Button5)
         Me.Controls.Add(Me.Button4)
@@ -234,7 +245,7 @@ Partial Class Main
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.StatusStrip1)
-        Me.Name = "Main"
+        Me.Name = "MAIN"
         Me.ShowIcon = False
         Me.StatusStrip1.ResumeLayout(False)
         Me.StatusStrip1.PerformLayout()
@@ -264,4 +275,5 @@ Partial Class Main
     Friend WithEvents Label3 As Label
     Friend WithEvents Label7 As Label
     Friend WithEvents Button6 As Button
+    Friend WithEvents Button7 As Button
 End Class

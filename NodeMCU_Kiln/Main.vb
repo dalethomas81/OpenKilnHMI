@@ -300,7 +300,7 @@
                 Button3.BackColor = Color.Tomato
         End Select
         Label1.Text = "SEGMENT: " & Kiln_01.Schedule.Segment.Name
-        Label2.Text = "SCHEDULE: " & Kiln_01.Command.SelectedSchedule & "-" & Kiln_01.Schedule.Name
+        Label2.Text = "SCHEDULE: " & Kiln_01.Command.SelectedSchedule & " - " & Kiln_01.Schedule.Name
         Label6.Text = "REMAINING: " & Kiln_01.Schedule.RemainingHours & ":" & Kiln_01.Schedule.RemainingMinutes & ":" & Kiln_01.Schedule.RemainingSeconds
         Label5.Text = "SETPOINT: " & Math.Round(Kiln_01.Command.Setpoint, 2) & " F"
         Label3.Text = "UPPER TEMP: " & Math.Round(Kiln_01.TemperatureController.Upper.Temperature, 2) & " F"
@@ -326,6 +326,9 @@
         Else
             Button6.Visible = False
         End If
+
+        SCHEDULE.Label1.Text = "SCHEDULE: " & Kiln_01.ChangeSelectedSchedule & " - " & Kiln_01.Schedule.Name
+        SCHEDULE.Label2.Text = "SEGMENT: " & Kiln_01.Schedule.ChangeSelectedSegment & " - " & Kiln_01.Schedule.Segment.Name
 
     End Sub
 
@@ -370,5 +373,9 @@
 
     Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
         SendModbusCoil(MB_CMD_HOLD_RELEASE, True)
+    End Sub
+
+    Private Sub Button7_Click(sender As Object, e As EventArgs) Handles Button7.Click
+        SCHEDULE.Show()
     End Sub
 End Class
