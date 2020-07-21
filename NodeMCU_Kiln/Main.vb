@@ -52,19 +52,19 @@
 
     Dim CoilsCount As Int16 = 10
     Dim CoilsIn(CoilsCount) As Boolean
-    Dim CoilsOut(CoilsCount) As Boolean
+    'Dim CoilsOut(CoilsCount) As Boolean
 
     Dim InputStatusCount As Int16 = 10
     Dim InputStatusIn(InputStatusCount) As Boolean
-    Dim InputStatusOut(InputStatusCount) As Boolean
+    'Dim InputStatusOut(InputStatusCount) As Boolean
 
     Dim HoldingRegistersCount As Int16 = 50
     Dim HoldingRegistersIn(HoldingRegistersCount) As Integer
-    Dim HoldingRegistersOut(HoldingRegistersCount) As Integer
+    'Dim HoldingRegistersOut(HoldingRegistersCount) As Integer
 
     Dim InputRegistersCount As Int16 = 50
     Dim InputRegistersIn(InputRegistersCount) As Integer
-    Dim InputRegistersOut(InputRegistersCount) As Integer
+    'Dim InputRegistersOut(InputRegistersCount) As Integer
 
     Dim HeartbeatLast As Integer = 0
     Dim HeartbeatOk As Boolean = False
