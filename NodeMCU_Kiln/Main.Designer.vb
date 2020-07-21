@@ -47,21 +47,23 @@ Partial Class Main
         '
         'Label1
         '
+        Me.Label1.AutoSize = True
         Me.Label1.Location = New System.Drawing.Point(6, 29)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(67, 13)
+        Me.Label1.Size = New System.Drawing.Size(66, 13)
         Me.Label1.TabIndex = 0
-        Me.Label1.Text = "Segment: "
-        Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.Label1.Text = "SEGMENT: "
+        Me.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'Label2
         '
+        Me.Label2.AutoSize = True
         Me.Label2.Location = New System.Drawing.Point(6, 16)
         Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(67, 13)
+        Me.Label2.Size = New System.Drawing.Size(71, 13)
         Me.Label2.TabIndex = 1
-        Me.Label2.Text = "Schedule: "
-        Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.Label2.Text = "SCHEDULE: "
+        Me.Label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
         'StatusStrip1
         '
@@ -75,21 +77,21 @@ Partial Class Main
         'ToolStripStatusLabel1
         '
         Me.ToolStripStatusLabel1.Name = "ToolStripStatusLabel1"
-        Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(65, 17)
-        Me.ToolStripStatusLabel1.Text = "Heartbeat: "
+        Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(76, 17)
+        Me.ToolStripStatusLabel1.Text = "HEARTBEAT: "
         '
         'ToolStripStatusLabel2
         '
-        Me.ToolStripStatusLabel2.BackColor = System.Drawing.Color.YellowGreen
+        Me.ToolStripStatusLabel2.BackColor = System.Drawing.SystemColors.Control
         Me.ToolStripStatusLabel2.Name = "ToolStripStatusLabel2"
-        Me.ToolStripStatusLabel2.Size = New System.Drawing.Size(95, 17)
-        Me.ToolStripStatusLabel2.Text = "Safety Circuit Ok"
+        Me.ToolStripStatusLabel2.Size = New System.Drawing.Size(94, 17)
+        Me.ToolStripStatusLabel2.Text = "SAFETY CIRCUIT"
         '
         'ToolStripStatusLabel3
         '
         Me.ToolStripStatusLabel3.Name = "ToolStripStatusLabel3"
-        Me.ToolStripStatusLabel3.Size = New System.Drawing.Size(44, 17)
-        Me.ToolStripStatusLabel3.Text = "Mode: "
+        Me.ToolStripStatusLabel3.Size = New System.Drawing.Size(47, 17)
+        Me.ToolStripStatusLabel3.Text = "MODE: "
         '
         'GroupBox1
         '
@@ -164,6 +166,7 @@ Partial Class Main
         Me.StatusStrip1.ResumeLayout(False)
         Me.StatusStrip1.PerformLayout()
         Me.GroupBox1.ResumeLayout(False)
+        Me.GroupBox1.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

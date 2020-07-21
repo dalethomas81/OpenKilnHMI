@@ -268,38 +268,38 @@
     End Sub
 
     Private Sub UpdateUI()
-        ToolStripStatusLabel1.Text = "Heartbeat: " & Kiln_01.Status.Heartbeat
+        ToolStripStatusLabel1.Text = "HEARTBEAT: " & Kiln_01.Status.Heartbeat
         If Kiln_01.Status.SafetyOk Then
-            ToolStripStatusLabel2.Text = "Safety Circuit Ok"
+            ToolStripStatusLabel2.Text = "SAFETY CIRCUIT OK"
             ToolStripStatusLabel2.BackColor = Color.YellowGreen
         Else
-            ToolStripStatusLabel2.Text = "Safety Circuit Not Ok"
+            ToolStripStatusLabel2.Text = "SAFETY CIRCUIT NOT OK"
             ToolStripStatusLabel2.BackColor = Color.Tomato
         End If
         Select Case Kiln_01.Mode
             Case 1  ' auto
-                ToolStripStatusLabel3.Text = "Mode: Automatic"
+                ToolStripStatusLabel3.Text = "MODE: AUTOMATIC"
                 ToolStripStatusLabel3.BackColor = Color.YellowGreen
-                Button3.Text = "Auto"
+                Button3.Text = "AUTOMATIC"
                 Button3.BackColor = Color.YellowGreen
             Case 2  ' manual
-                ToolStripStatusLabel3.Text = "Mode: Manual"
+                ToolStripStatusLabel3.Text = "MODE: MANUAL"
                 ToolStripStatusLabel3.BackColor = Color.SkyBlue
-                Button3.Text = "Manual"
+                Button3.Text = "MANUAL"
                 Button3.BackColor = Color.SkyBlue
             Case 3  ' simulation
-                ToolStripStatusLabel3.Text = "Mode: Simulation"
+                ToolStripStatusLabel3.Text = "MODE: SIMULATION"
                 ToolStripStatusLabel3.BackColor = Color.DarkOrange
-                Button3.Text = "Simulation"
+                Button3.Text = "SIMULATION"
                 Button3.BackColor = Color.DarkOrange
             Case Else
-                ToolStripStatusLabel3.Text = "Mode: unknown"
+                ToolStripStatusLabel3.Text = "MODE: UNKNOWN"
                 ToolStripStatusLabel3.BackColor = Color.Tomato
-                Button3.Text = "unknown"
+                Button3.Text = "UNKNOWN"
                 Button3.BackColor = Color.Tomato
         End Select
-        Label1.Text = "Segment: " & Kiln_01.Schedule.Segment.Name
-        Label2.Text = "Schedule: " & Kiln_01.Schedule.Name
+        Label1.Text = "SEGMENT: " & Kiln_01.Schedule.Segment.Name
+        Label2.Text = "SCHEDULE: " & Kiln_01.Command.SelectedSchedule & "-" & Kiln_01.Schedule.Name
 
     End Sub
 
