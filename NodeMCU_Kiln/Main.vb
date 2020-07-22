@@ -1,7 +1,8 @@
 ﻿Public Class MAIN
     Private SerialPort = "COM25"
     Private IPAddress = "192.168.0.21"
-    Private COM_MODE = "RTU" ' TCP
+    'Private COM_MODE = "RTU"
+    Private COM_MODE = "TCP"
     Public Const MAX_STRING_LENGTH = 16
     ' coils (RW) 
     Public Const MB_CMD_SELECT_SCHEDULE As Integer = 1
