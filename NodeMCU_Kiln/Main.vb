@@ -1,5 +1,6 @@
 ﻿Public Class MAIN
     Private SerialPort = "COM25"
+    Private IPAddress = "192.168.0.21"
     Public Const MAX_STRING_LENGTH = 16
     ' coils (RW) 
     Public Const MB_CMD_SELECT_SCHEDULE As Integer = 1
@@ -146,11 +147,12 @@
     End Sub
 
     Private Sub GetModbusData()
-        Dim mb As New EasyModbus.ModbusClient(SerialPort)
-        mb.Baudrate = 115200
-        mb.Parity = IO.Ports.Parity.None
+        Dim mb As New EasyModbus.ModbusClient(IPAddress, 502)
+        'Dim mb As New EasyModbus.ModbusClient(SerialPort)
+        'mb.Baudrate = 115200
+        'mb.Parity = IO.Ports.Parity.None
         mb.UnitIdentifier = 1
-        mb.StopBits = IO.Ports.StopBits.One
+        'mb.StopBits = IO.Ports.StopBits.One
 
         If Not mb.Connected Then
             mb.Connect()
@@ -165,11 +167,12 @@
     End Sub
 
     Public Sub SendModbusCoil(ByVal Address As Integer, ByVal Value As Boolean)
-        Dim mb As New EasyModbus.ModbusClient(SerialPort)
-        mb.Baudrate = 115200
-        mb.Parity = IO.Ports.Parity.None
+        Dim mb As New EasyModbus.ModbusClient(IPAddress, 502)
+        'Dim mb As New EasyModbus.ModbusClient(SerialPort)
+        'mb.Baudrate = 115200
+        'mb.Parity = IO.Ports.Parity.None
         mb.UnitIdentifier = 1
-        mb.StopBits = IO.Ports.StopBits.One
+        'mb.StopBits = IO.Ports.StopBits.One
 
         If Not mb.Connected Then
             mb.Connect()
@@ -181,11 +184,12 @@
     End Sub
 
     Public Sub SendModbusHoldingRegister(ByVal Address As Integer, ByVal Value As Integer)
-        Dim mb As New EasyModbus.ModbusClient(SerialPort)
-        mb.Baudrate = 115200
-        mb.Parity = IO.Ports.Parity.None
+        Dim mb As New EasyModbus.ModbusClient(IPAddress, 502)
+        'Dim mb As New EasyModbus.ModbusClient(SerialPort)
+        'mb.Baudrate = 115200
+        'mb.Parity = IO.Ports.Parity.None
         mb.UnitIdentifier = 1
-        mb.StopBits = IO.Ports.StopBits.One
+        'mb.StopBits = IO.Ports.StopBits.One
 
         If Not mb.Connected Then
             mb.Connect()
@@ -197,11 +201,12 @@
     End Sub
 
     Public Sub SendModbusMultipleHoldingRegisters(ByVal Address As Integer, ByVal Values() As Integer)
-        Dim mb As New EasyModbus.ModbusClient(SerialPort)
-        mb.Baudrate = 115200
-        mb.Parity = IO.Ports.Parity.None
+        Dim mb As New EasyModbus.ModbusClient(IPAddress, 502)
+        'Dim mb As New EasyModbus.ModbusClient(SerialPort)
+        'mb.Baudrate = 115200
+        'mb.Parity = IO.Ports.Parity.None
         mb.UnitIdentifier = 1
-        mb.StopBits = IO.Ports.StopBits.One
+        'mb.StopBits = IO.Ports.StopBits.One
 
         If Not mb.Connected Then
             mb.Connect()
