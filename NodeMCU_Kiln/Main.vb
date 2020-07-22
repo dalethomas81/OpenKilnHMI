@@ -76,8 +76,8 @@
         Dim Enabled As Boolean
         Dim HoldEnabled As Boolean
         Dim Setpoint As Double
-        Dim RampRate As UInteger
-        Dim SoakTime As UInteger
+        Dim RampRate As Integer
+        Dim SoakTime As Integer
     End Structure
 
     Structure Kiln_Schedule
@@ -398,8 +398,8 @@
                 Button3.Text = "UNKNOWN"
                 Button3.BackColor = Color.Tomato
         End Select
-        Label14.Text = Kiln_01.Schedule.Segment.Name
-        Label12.Text = Kiln_01.Command.SelectedSchedule & " - " & Kiln_01.Schedule.Name
+        Label12.Text = Kiln_01.Command.SelectedSchedule & " - " & Kiln_01.Status.ScheduleName
+        Label14.Text = Kiln_01.Status.SegmentName
         Label9.Text = Kiln_01.Schedule.RemainingHours.ToString("D2") & ":" &
                     Kiln_01.Schedule.RemainingMinutes.ToString("D2") & ":" &
                     Kiln_01.Schedule.RemainingSeconds.ToString("D2")
@@ -431,18 +431,8 @@
         SCHEDULE.Label4.Text = Kiln_01.ChangeSelectedSchedule & " - " & Kiln_01.Schedule.Name
         SCHEDULE.Label5.Text = Kiln_01.Schedule.ChangeSelectedSegment & " - " & Kiln_01.Schedule.Segment.Name
 
-        'If Kiln_01.Schedule.Segment.Enabled Then
-        '    SCHEDULE.CheckBox1.Checked = True
-        'Else
-        '    SCHEDULE.CheckBox1.Checked = False
-        'End If
         SCHEDULE.CheckBox1.Checked = Kiln_01.Schedule.Segment.Enabled
 
-        'If Kiln_01.Schedule.Segment.HoldEnabled Then
-        '    SCHEDULE.CheckBox2.Checked = True
-        'Else
-        '    SCHEDULE.CheckBox2.Checked = False
-        'End If
         SCHEDULE.CheckBox2.Checked = Kiln_01.Schedule.Segment.HoldEnabled
 
         If Kiln_01.Status.EepromWritten Then
@@ -520,4 +510,5 @@
         'SETTINGS.CheckBox1.Checked = Kiln_01.Command.ThermalOverride
         SETTINGS.Show()
     End Sub
+
 End Class
