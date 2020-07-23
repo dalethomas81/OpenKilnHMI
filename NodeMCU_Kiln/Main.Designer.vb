@@ -103,7 +103,7 @@ Partial Class MAIN
         Me.ToolStripStatusLabel2.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left
         Me.ToolStripStatusLabel2.BorderStyle = System.Windows.Forms.Border3DStyle.Etched
         Me.ToolStripStatusLabel2.Name = "ToolStripStatusLabel2"
-        Me.ToolStripStatusLabel2.Size = New System.Drawing.Size(98, 19)
+        Me.ToolStripStatusLabel2.Size = New System.Drawing.Size(96, 19)
         Me.ToolStripStatusLabel2.Text = "SAFETY CIRCUIT"
         '
         'ToolStripStatusLabel4
@@ -111,7 +111,7 @@ Partial Class MAIN
         Me.ToolStripStatusLabel4.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left
         Me.ToolStripStatusLabel4.BorderStyle = System.Windows.Forms.Border3DStyle.Etched
         Me.ToolStripStatusLabel4.Name = "ToolStripStatusLabel4"
-        Me.ToolStripStatusLabel4.Size = New System.Drawing.Size(122, 19)
+        Me.ToolStripStatusLabel4.Size = New System.Drawing.Size(120, 19)
         Me.ToolStripStatusLabel4.Text = "THERMAL MONITOR"
         '
         'ToolStripStatusLabel1
@@ -119,7 +119,7 @@ Partial Class MAIN
         Me.ToolStripStatusLabel1.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Left
         Me.ToolStripStatusLabel1.BorderStyle = System.Windows.Forms.Border3DStyle.Etched
         Me.ToolStripStatusLabel1.Name = "ToolStripStatusLabel1"
-        Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(80, 19)
+        Me.ToolStripStatusLabel1.Size = New System.Drawing.Size(78, 19)
         Me.ToolStripStatusLabel1.Text = "HEARTBEAT: "
         '
         'GroupBox1
