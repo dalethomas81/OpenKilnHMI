@@ -1,6 +1,6 @@
 ﻿Public Class MAIN
     Private SerialPort = "COM25"
-    Private IPAddress = "192.168.0.21"
+    Private IPAddress = "192.168.0.101"
     'Private COM_MODE = "RTU"
     Private COM_MODE = "TCP"
     Public Const MAX_STRING_LENGTH = 16
@@ -149,126 +149,142 @@
     End Sub
 
     Private Sub GetModbusData()
-        Dim mb As New EasyModbus.ModbusClient
-        'Dim mb As New EasyModbus.ModbusClient(IPAddress, 502)
-        'Dim mb As New EasyModbus.ModbusClient(SerialPort)
-        'mb.Baudrate = 115200
-        'mb.Parity = IO.Ports.Parity.None
-        'mb.UnitIdentifier = 1
-        'mb.StopBits = IO.Ports.StopBits.One
+        Try
+            Dim mb As New EasyModbus.ModbusClient
+            'Dim mb As New EasyModbus.ModbusClient(IPAddress, 502)
+            'Dim mb As New EasyModbus.ModbusClient(SerialPort)
+            'mb.Baudrate = 115200
+            'mb.Parity = IO.Ports.Parity.None
+            'mb.UnitIdentifier = 1
+            'mb.StopBits = IO.Ports.StopBits.One
 
-        Select Case COM_MODE
-            Case "RTU"
-                mb = New EasyModbus.ModbusClient(SerialPort)
-                mb.Baudrate = 115200
-                mb.Parity = IO.Ports.Parity.None
-                mb.UnitIdentifier = 1
-                mb.StopBits = IO.Ports.StopBits.One
-            Case "TCP"
-                mb = New EasyModbus.ModbusClient(IPAddress, 502)
-                mb.UnitIdentifier = 1
-        End Select
+            Select Case COM_MODE
+                Case "RTU"
+                    mb = New EasyModbus.ModbusClient(SerialPort)
+                    mb.Baudrate = 115200
+                    mb.Parity = IO.Ports.Parity.None
+                    mb.UnitIdentifier = 1
+                    mb.StopBits = IO.Ports.StopBits.One
+                Case "TCP"
+                    mb = New EasyModbus.ModbusClient(IPAddress, 502)
+                    mb.UnitIdentifier = 1
+            End Select
 
-        If Not mb.Connected Then
-            mb.Connect()
-        End If
-        If mb.Connected Then
-            CoilsIn = mb.ReadCoils(1, CoilsCount)
-            InputStatusIn = mb.ReadDiscreteInputs(1, InputStatusCount)
-            HoldingRegistersIn = mb.ReadHoldingRegisters(1, HoldingRegistersCount)
-            InputRegistersIn = mb.ReadInputRegisters(1, InputRegistersCount)
-            mb.Disconnect()
-        End If
+            If Not mb.Connected Then
+                mb.Connect()
+            End If
+            If mb.Connected Then
+                CoilsIn = mb.ReadCoils(1, CoilsCount)
+                InputStatusIn = mb.ReadDiscreteInputs(1, InputStatusCount)
+                HoldingRegistersIn = mb.ReadHoldingRegisters(1, HoldingRegistersCount)
+                InputRegistersIn = mb.ReadInputRegisters(1, InputRegistersCount)
+                mb.Disconnect()
+            End If
+        Catch ex As Exception
+
+        End Try
     End Sub
 
     Public Sub SendModbusCoil(ByVal Address As Integer, ByVal Value As Boolean)
-        Dim mb As New EasyModbus.ModbusClient
-        'Dim mb As New EasyModbus.ModbusClient(IPAddress, 502)
-        'Dim mb As New EasyModbus.ModbusClient(SerialPort)
-        'mb.Baudrate = 115200
-        'mb.Parity = IO.Ports.Parity.None
-        'mb.UnitIdentifier = 1
-        'mb.StopBits = IO.Ports.StopBits.One
+        Try
+            Dim mb As New EasyModbus.ModbusClient
+            'Dim mb As New EasyModbus.ModbusClient(IPAddress, 502)
+            'Dim mb As New EasyModbus.ModbusClient(SerialPort)
+            'mb.Baudrate = 115200
+            'mb.Parity = IO.Ports.Parity.None
+            'mb.UnitIdentifier = 1
+            'mb.StopBits = IO.Ports.StopBits.One
 
-        Select Case COM_MODE
-            Case "RTU"
-                mb = New EasyModbus.ModbusClient(SerialPort)
-                mb.Baudrate = 115200
-                mb.Parity = IO.Ports.Parity.None
-                mb.UnitIdentifier = 1
-                mb.StopBits = IO.Ports.StopBits.One
-            Case "TCP"
-                mb = New EasyModbus.ModbusClient(IPAddress, 502)
-                mb.UnitIdentifier = 1
-        End Select
+            Select Case COM_MODE
+                Case "RTU"
+                    mb = New EasyModbus.ModbusClient(SerialPort)
+                    mb.Baudrate = 115200
+                    mb.Parity = IO.Ports.Parity.None
+                    mb.UnitIdentifier = 1
+                    mb.StopBits = IO.Ports.StopBits.One
+                Case "TCP"
+                    mb = New EasyModbus.ModbusClient(IPAddress, 502)
+                    mb.UnitIdentifier = 1
+            End Select
 
-        If Not mb.Connected Then
-            mb.Connect()
-        End If
-        If mb.Connected Then
-            mb.WriteSingleCoil(Address, Value)
-            mb.Disconnect()
-        End If
+            If Not mb.Connected Then
+                mb.Connect()
+            End If
+            If mb.Connected Then
+                mb.WriteSingleCoil(Address, Value)
+                mb.Disconnect()
+            End If
+        Catch ex As Exception
+
+        End Try
     End Sub
 
     Public Sub SendModbusHoldingRegister(ByVal Address As Integer, ByVal Value As Integer)
-        Dim mb As New EasyModbus.ModbusClient
-        'Dim mb As New EasyModbus.ModbusClient(IPAddress, 502)
-        'Dim mb As New EasyModbus.ModbusClient(SerialPort)
-        'mb.Baudrate = 115200
-        'mb.Parity = IO.Ports.Parity.None
-        'mb.UnitIdentifier = 1
-        'mb.StopBits = IO.Ports.StopBits.One
+        Try
+            Dim mb As New EasyModbus.ModbusClient
+            'Dim mb As New EasyModbus.ModbusClient(IPAddress, 502)
+            'Dim mb As New EasyModbus.ModbusClient(SerialPort)
+            'mb.Baudrate = 115200
+            'mb.Parity = IO.Ports.Parity.None
+            'mb.UnitIdentifier = 1
+            'mb.StopBits = IO.Ports.StopBits.One
 
-        Select Case COM_MODE
-            Case "RTU"
-                mb = New EasyModbus.ModbusClient(SerialPort)
-                mb.Baudrate = 115200
-                mb.Parity = IO.Ports.Parity.None
-                mb.UnitIdentifier = 1
-                mb.StopBits = IO.Ports.StopBits.One
-            Case "TCP"
-                mb = New EasyModbus.ModbusClient(IPAddress, 502)
-                mb.UnitIdentifier = 1
-        End Select
+            Select Case COM_MODE
+                Case "RTU"
+                    mb = New EasyModbus.ModbusClient(SerialPort)
+                    mb.Baudrate = 115200
+                    mb.Parity = IO.Ports.Parity.None
+                    mb.UnitIdentifier = 1
+                    mb.StopBits = IO.Ports.StopBits.One
+                Case "TCP"
+                    mb = New EasyModbus.ModbusClient(IPAddress, 502)
+                    mb.UnitIdentifier = 1
+            End Select
 
-        If Not mb.Connected Then
-            mb.Connect()
-        End If
-        If mb.Connected Then
-            mb.WriteSingleRegister(Address, Value)
-            mb.Disconnect()
-        End If
+            If Not mb.Connected Then
+                mb.Connect()
+            End If
+            If mb.Connected Then
+                mb.WriteSingleRegister(Address, Value)
+                mb.Disconnect()
+            End If
+        Catch ex As Exception
+
+        End Try
     End Sub
 
     Public Sub SendModbusMultipleHoldingRegisters(ByVal Address As Integer, ByVal Values() As Integer)
-        Dim mb As New EasyModbus.ModbusClient
-        'Dim mb As New EasyModbus.ModbusClient(IPAddress, 502)
-        'Dim mb As New EasyModbus.ModbusClient(SerialPort)
-        'mb.Baudrate = 115200
-        'mb.Parity = IO.Ports.Parity.None
-        'mb.UnitIdentifier = 1
-        'mb.StopBits = IO.Ports.StopBits.One
+        Try
+            Dim mb As New EasyModbus.ModbusClient
+            'Dim mb As New EasyModbus.ModbusClient(IPAddress, 502)
+            'Dim mb As New EasyModbus.ModbusClient(SerialPort)
+            'mb.Baudrate = 115200
+            'mb.Parity = IO.Ports.Parity.None
+            'mb.UnitIdentifier = 1
+            'mb.StopBits = IO.Ports.StopBits.One
 
-        Select Case COM_MODE
-            Case "RTU"
-                mb = New EasyModbus.ModbusClient(SerialPort)
-                mb.Baudrate = 115200
-                mb.Parity = IO.Ports.Parity.None
-                mb.UnitIdentifier = 1
-                mb.StopBits = IO.Ports.StopBits.One
-            Case "TCP"
-                mb = New EasyModbus.ModbusClient(IPAddress, 502)
-                mb.UnitIdentifier = 1
-        End Select
+            Select Case COM_MODE
+                Case "RTU"
+                    mb = New EasyModbus.ModbusClient(SerialPort)
+                    mb.Baudrate = 115200
+                    mb.Parity = IO.Ports.Parity.None
+                    mb.UnitIdentifier = 1
+                    mb.StopBits = IO.Ports.StopBits.One
+                Case "TCP"
+                    mb = New EasyModbus.ModbusClient(IPAddress, 502)
+                    mb.UnitIdentifier = 1
+            End Select
 
-        If Not mb.Connected Then
-            mb.Connect()
-        End If
-        If mb.Connected Then
-            mb.WriteMultipleRegisters(Address, Values)
-            mb.Disconnect()
-        End If
+            If Not mb.Connected Then
+                mb.Connect()
+            End If
+            If mb.Connected Then
+                mb.WriteMultipleRegisters(Address, Values)
+                mb.Disconnect()
+            End If
+        Catch ex As Exception
+
+        End Try
     End Sub
 
     Private Sub MapVariables()
