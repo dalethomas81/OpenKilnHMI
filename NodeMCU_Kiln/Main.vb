@@ -1,6 +1,6 @@
 ﻿Public Class MAIN
     Private SerialPort = "COM25"
-    Private IPAddress = "192.168.0.101"
+    Private IPAddress = "192.168.0.21"
     'Private COM_MODE = "RTU"
     Private COM_MODE = "TCP"
     Public Const MAX_STRING_LENGTH = 16
@@ -13,6 +13,10 @@
     Public Const MB_CMD_WRITE_EEPROM As Integer = 6
     Public Const MB_SCH_SEG_ENABLED As Integer = 7
     Public Const MB_SCH_SEG_HOLD_EN As Integer = 8
+    Public Const MB_CMD_CAL_CH0_LOW As Integer = 9
+    Public Const MB_CMD_CAL_CH1_LOW As Integer = 10
+    Public Const MB_CMD_CAL_CH0_HIGH As Integer = 11
+    Public Const MB_CMD_CAL_CH1_HIGH As Integer = 12
     ' input status (R)
     Public Const MB_STS_SSR_01 As Integer = 1
     Public Const MB_STS_SSR_02 As Integer = 2
@@ -38,6 +42,8 @@
     Public Const MB_SCH_SEG_SOAK_TIME As Integer = 36
     Public Const MB_SCH_SEG_SELECTED As Integer = 37
     Public Const MB_SCH_SELECTED As Integer = 38
+    Public Const MB_CAL_TEMP_ACT_CH0 As Integer = 39
+    Public Const MB_CAL_TEMP_ACT_CH1 As Integer = 41
     ' input registers (R) 16 bit
     Public Const MB_HEARTBEAT As Integer = 1
     Public Const MB_STS_REMAINING_TIME_H As Integer = 2
@@ -52,6 +58,8 @@
     Public Const MB_STS_SEGMENT_STATE As Integer = 15
     Public Const MB_STS_SEGMENT_NAME As Integer = 16
     Public Const MB_STS_SCHEDULE_NAME As Integer = 24
+    Public Const MB_STS_TEMP_01_RAW As Integer = 32
+    Public Const MB_STS_TEMP_02_RAW As Integer = 34
 
     Dim CoilsCount As Int16 = 10
     Dim CoilsIn(CoilsCount) As Boolean
@@ -118,7 +126,11 @@
 
     Structure Kiln_PID
         Dim Temperature As Double
-        Dim Output As Integer
+        Dim Temperature_raw As Double
+        Dim Temperature_actual As Double
+        Dim Cal_Map_low As Boolean
+        Dim Cal_Map_high As Boolean
+        Dim Output As Single
         Dim SSR As Boolean
         Dim P As Double
         Dim I As Double
@@ -298,6 +310,10 @@
         Kiln_01.Command.WriteEeprom = CoilsIn(MB_CMD_WRITE_EEPROM - 1)
         Kiln_01.Schedule.Segment.Enabled = CoilsIn(MB_SCH_SEG_ENABLED - 1)
         Kiln_01.Schedule.Segment.HoldEnabled = CoilsIn(MB_SCH_SEG_HOLD_EN - 1)
+        Kiln_01.TemperatureController.Upper.Cal_Map_low = CoilsIn(MB_CMD_CAL_CH0_LOW - 1)
+        Kiln_01.TemperatureController.Lower.Cal_Map_low = CoilsIn(MB_CMD_CAL_CH1_LOW - 1)
+        Kiln_01.TemperatureController.Upper.Cal_Map_high = CoilsIn(MB_CMD_CAL_CH0_HIGH - 1)
+        Kiln_01.TemperatureController.Lower.Cal_Map_high = CoilsIn(MB_CMD_CAL_CH1_HIGH - 1)
         ' input status
         Kiln_01.TemperatureController.Upper.SSR = InputStatusIn(MB_STS_SSR_01 - 1)
         Kiln_01.TemperatureController.Lower.SSR = InputStatusIn(MB_STS_SSR_02 - 1)
@@ -339,6 +355,8 @@
         Kiln_01.Schedule.Segment.SoakTime = HoldingRegistersIn(MB_SCH_SEG_SOAK_TIME - 1)
         Kiln_01.Schedule.ChangeSelectedSegment = HoldingRegistersIn(MB_SCH_SEG_SELECTED - 1)
         Kiln_01.ChangeSelectedSchedule = HoldingRegistersIn(MB_SCH_SELECTED - 1)
+        Kiln_01.TemperatureController.Upper.Temperature_actual = HoldingRegistersIn(MB_CAL_TEMP_ACT_CH0 - 1)
+        Kiln_01.TemperatureController.Lower.Temperature_actual = HoldingRegistersIn(MB_CAL_TEMP_ACT_CH1 - 1)
         ' input registers
         Kiln_01.Status.Heartbeat = InputRegistersIn(MB_HEARTBEAT - 1)
         Kiln_01.Schedule.RemainingHours = InputRegistersIn(MB_STS_REMAINING_TIME_H - 1)
@@ -361,6 +379,12 @@
         Kiln_01.Status.SegmentState = InputRegistersIn(MB_STS_SEGMENT_STATE - 1)
         Kiln_01.Status.SegmentName = EasyModbus.ModbusClient.ConvertRegistersToString(InputRegistersIn, MB_STS_SEGMENT_NAME - 1, 16)
         Kiln_01.Status.ScheduleName = EasyModbus.ModbusClient.ConvertRegistersToString(InputRegistersIn, MB_STS_SCHEDULE_NAME - 1, 16)
+        TempRegArray(0) = InputRegistersIn(MB_STS_TEMP_01_RAW - 1)
+        TempRegArray(1) = InputRegistersIn(MB_STS_TEMP_01_RAW + 1 - 1)
+        Kiln_01.TemperatureController.Upper.Temperature_raw = EasyModbus.ModbusClient.ConvertRegistersToFloat(TempRegArray)
+        TempRegArray(0) = InputRegistersIn(MB_STS_TEMP_02_RAW - 1)
+        TempRegArray(1) = InputRegistersIn(MB_STS_TEMP_02_RAW + 1 - 1)
+        Kiln_01.TemperatureController.Lower.Temperature_raw = EasyModbus.ModbusClient.ConvertRegistersToFloat(TempRegArray)
     End Sub
 
     Private Sub UpdateUI()
@@ -454,8 +478,10 @@
 
         If Kiln_01.Status.EepromWritten Then
             SCHEDULE.Label3.Visible = True
+            PID_SETTINGS.Label4.Visible = True
         Else
             SCHEDULE.Label3.Visible = False
+            PID_SETTINGS.Label4.Visible = False
         End If
 
         SCHEDULE.Label9.Text = Kiln_01.Schedule.Segment.Setpoint
@@ -463,6 +489,22 @@
         SCHEDULE.Label11.Text = Kiln_01.Schedule.Segment.SoakTime
 
         SETTINGS.CheckBox1.Checked = Kiln_01.Command.ThermalOverride
+
+        SETTINGS.Label3.Text = Math.Round(Kiln_01.TemperatureController.Upper.Temperature_raw, 2)
+        SETTINGS.Label4.Text = Math.Round(Kiln_01.TemperatureController.Lower.Temperature_raw, 2)
+        SETTINGS.Label7.Text = Math.Round(Kiln_01.TemperatureController.Upper.Output, 2)
+        SETTINGS.Label5.Text = Math.Round(Kiln_01.TemperatureController.Lower.Output, 2)
+
+        SETTINGS.Label9.Text = Math.Round(Kiln_01.TemperatureController.Upper.P, 4)
+        SETTINGS.Label11.Text = Math.Round(Kiln_01.TemperatureController.Upper.I, 4)
+        SETTINGS.Label13.Text = Math.Round(Kiln_01.TemperatureController.Upper.D, 4)
+
+        SETTINGS.Label19.Text = Math.Round(Kiln_01.TemperatureController.Lower.P, 4)
+        SETTINGS.Label17.Text = Math.Round(Kiln_01.TemperatureController.Lower.I, 4)
+        SETTINGS.Label15.Text = Math.Round(Kiln_01.TemperatureController.Lower.D, 4)
+
+        SETTINGS.NumericUpDown1.Value = Math.Round(Kiln_01.TemperatureController.Upper.Temperature_actual, 2)
+        SETTINGS.NumericUpDown2.Value = Math.Round(Kiln_01.TemperatureController.Lower.Temperature_actual, 2)
 
     End Sub
 
@@ -525,6 +567,8 @@
 
     Private Sub Button8_Click(sender As Object, e As EventArgs) Handles Button8.Click
         'SETTINGS.CheckBox1.Checked = Kiln_01.Command.ThermalOverride
+        SETTINGS.NumericUpDown1.Value = Kiln_01.TemperatureController.Upper.Temperature_actual
+        SETTINGS.NumericUpDown2.Value = Kiln_01.TemperatureController.Lower.Temperature_actual
         SETTINGS.Show()
     End Sub
 

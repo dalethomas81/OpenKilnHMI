@@ -234,7 +234,6 @@ Partial Class SCHEDULE
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(584, 265)
-        Me.ControlBox = False
         Me.Controls.Add(Me.Button6)
         Me.Controls.Add(Me.Label11)
         Me.Controls.Add(Me.Label10)
