@@ -488,26 +488,26 @@
         SCHEDULE.Label10.Text = Kiln_01.Schedule.Segment.RampRate
         SCHEDULE.Label11.Text = Kiln_01.Schedule.Segment.SoakTime
 
-        SETTINGS.CheckBox1.Checked = Kiln_01.Command.ThermalOverride
+        TUNING.CheckBox1.Checked = Kiln_01.Command.ThermalOverride
 
-        SETTINGS.Label3.Text = Math.Round(Kiln_01.TemperatureController.Upper.Temperature_raw, 2) & " F"
-        SETTINGS.Label4.Text = Math.Round(Kiln_01.TemperatureController.Lower.Temperature_raw, 2) & " F"
-        SETTINGS.Label7.Text = Math.Round(Kiln_01.TemperatureController.Upper.Output, 2)
-        SETTINGS.Label5.Text = Math.Round(Kiln_01.TemperatureController.Lower.Output, 2)
+        TUNING.Label3.Text = Math.Round(Kiln_01.TemperatureController.Upper.Temperature_raw, 2) & " F"
+        TUNING.Label4.Text = Math.Round(Kiln_01.TemperatureController.Lower.Temperature_raw, 2) & " F"
+        TUNING.Label7.Text = Math.Round(Kiln_01.TemperatureController.Upper.Output, 2)
+        TUNING.Label5.Text = Math.Round(Kiln_01.TemperatureController.Lower.Output, 2)
 
-        SETTINGS.Label9.Text = Math.Round(Kiln_01.TemperatureController.Upper.P, 4)
-        SETTINGS.Label11.Text = Math.Round(Kiln_01.TemperatureController.Upper.I, 4)
-        SETTINGS.Label13.Text = Math.Round(Kiln_01.TemperatureController.Upper.D, 4)
+        TUNING.Label9.Text = Math.Round(Kiln_01.TemperatureController.Upper.P, 4)
+        TUNING.Label11.Text = Math.Round(Kiln_01.TemperatureController.Upper.I, 4)
+        TUNING.Label13.Text = Math.Round(Kiln_01.TemperatureController.Upper.D, 4)
 
-        SETTINGS.Label19.Text = Math.Round(Kiln_01.TemperatureController.Lower.P, 4)
-        SETTINGS.Label17.Text = Math.Round(Kiln_01.TemperatureController.Lower.I, 4)
-        SETTINGS.Label15.Text = Math.Round(Kiln_01.TemperatureController.Lower.D, 4)
+        TUNING.Label19.Text = Math.Round(Kiln_01.TemperatureController.Lower.P, 4)
+        TUNING.Label17.Text = Math.Round(Kiln_01.TemperatureController.Lower.I, 4)
+        TUNING.Label15.Text = Math.Round(Kiln_01.TemperatureController.Lower.D, 4)
 
         'SETTINGS.NumericUpDown1.Value = Math.Round(Kiln_01.TemperatureController.Upper.Temperature_actual, 2)
         'SETTINGS.NumericUpDown2.Value = Math.Round(Kiln_01.TemperatureController.Lower.Temperature_actual, 2)
 
-        SETTINGS.Label23.Text = Math.Round(Kiln_01.TemperatureController.Upper.Temperature, 2) & " F"
-        SETTINGS.Label28.Text = Math.Round(Kiln_01.TemperatureController.Lower.Temperature, 2) & " F"
+        TUNING.Label23.Text = Math.Round(Kiln_01.TemperatureController.Upper.Temperature, 2) & " F"
+        TUNING.Label28.Text = Math.Round(Kiln_01.TemperatureController.Lower.Temperature, 2) & " F"
 
     End Sub
 
@@ -570,9 +570,9 @@
 
     Private Sub Button8_Click(sender As Object, e As EventArgs) Handles Button8.Click
         'SETTINGS.CheckBox1.Checked = Kiln_01.Command.ThermalOverride
-        SETTINGS.NumericUpDown1.Value = Kiln_01.TemperatureController.Upper.Temperature_actual
-        SETTINGS.NumericUpDown2.Value = Kiln_01.TemperatureController.Lower.Temperature_actual
-        SETTINGS.Show()
+        TUNING.NumericUpDown1.Value = Kiln_01.TemperatureController.Upper.Temperature_actual
+        TUNING.NumericUpDown2.Value = Kiln_01.TemperatureController.Lower.Temperature_actual
+        TUNING.Show()
     End Sub
 
     Private Sub Label10_Click(sender As Object, e As EventArgs) Handles Label10.Click

@@ -340,7 +340,7 @@ Partial Class MAIN
         Me.Button8.Name = "Button8"
         Me.Button8.Size = New System.Drawing.Size(108, 53)
         Me.Button8.TabIndex = 11
-        Me.Button8.Text = "SETTINGS"
+        Me.Button8.Text = "TUNING"
         Me.Button8.UseVisualStyleBackColor = True
         '
         'MAIN

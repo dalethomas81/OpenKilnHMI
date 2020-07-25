@@ -128,10 +128,10 @@
     <Compile Include="SETPOINT.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="SETTINGS.Designer.vb">
-      <DependentUpon>SETTINGS.vb</DependentUpon>
+    <Compile Include="TUNING.Designer.vb">
+      <DependentUpon>TUNING.vb</DependentUpon>
     </Compile>
-    <Compile Include="SETTINGS.vb">
+    <Compile Include="TUNING.vb">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>
@@ -160,8 +160,8 @@
     <EmbeddedResource Include="SETPOINT.resx">
       <DependentUpon>SETPOINT.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SETTINGS.resx">
-      <DependentUpon>SETTINGS.vb</DependentUpon>
+    <EmbeddedResource Include="TUNING.resx">
+      <DependentUpon>TUNING.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
