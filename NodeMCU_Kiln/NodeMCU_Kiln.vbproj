@@ -122,6 +122,12 @@
     <Compile Include="SEGMENT_NAME.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="SETPOINT.Designer.vb">
+      <DependentUpon>SETPOINT.vb</DependentUpon>
+    </Compile>
+    <Compile Include="SETPOINT.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="SETTINGS.Designer.vb">
       <DependentUpon>SETTINGS.vb</DependentUpon>
     </Compile>
@@ -150,6 +156,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SEGMENT_NAME.resx">
       <DependentUpon>SEGMENT_NAME.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SETPOINT.resx">
+      <DependentUpon>SETPOINT.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SETTINGS.resx">
       <DependentUpon>SETTINGS.vb</DependentUpon>

@@ -55,6 +55,10 @@ Partial Class SETTINGS
         Me.NumericUpDown2 = New System.Windows.Forms.NumericUpDown()
         Me.Button4 = New System.Windows.Forms.Button()
         Me.Button5 = New System.Windows.Forms.Button()
+        Me.Label23 = New System.Windows.Forms.Label()
+        Me.Label25 = New System.Windows.Forms.Label()
+        Me.Label27 = New System.Windows.Forms.Label()
+        Me.Label28 = New System.Windows.Forms.Label()
         CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.NumericUpDown2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -345,14 +349,20 @@ Partial Class SETTINGS
         '
         'NumericUpDown1
         '
+        Me.NumericUpDown1.DecimalPlaces = 2
         Me.NumericUpDown1.Location = New System.Drawing.Point(147, 44)
+        Me.NumericUpDown1.Maximum = New Decimal(New Integer() {10000, 0, 0, 0})
+        Me.NumericUpDown1.Minimum = New Decimal(New Integer() {10000, 0, 0, -2147483648})
         Me.NumericUpDown1.Name = "NumericUpDown1"
         Me.NumericUpDown1.Size = New System.Drawing.Size(68, 20)
         Me.NumericUpDown1.TabIndex = 59
         '
         'NumericUpDown2
         '
+        Me.NumericUpDown2.DecimalPlaces = 2
         Me.NumericUpDown2.Location = New System.Drawing.Point(147, 160)
+        Me.NumericUpDown2.Maximum = New Decimal(New Integer() {10000, 0, 0, 0})
+        Me.NumericUpDown2.Minimum = New Decimal(New Integer() {10000, 0, 0, -2147483648})
         Me.NumericUpDown2.Name = "NumericUpDown2"
         Me.NumericUpDown2.Size = New System.Drawing.Size(68, 20)
         Me.NumericUpDown2.TabIndex = 60
@@ -377,11 +387,55 @@ Partial Class SETTINGS
         Me.Button5.Text = "SET LOWER LOW"
         Me.Button5.UseVisualStyleBackColor = True
         '
+        'Label23
+        '
+        Me.Label23.AutoSize = True
+        Me.Label23.Location = New System.Drawing.Point(147, 86)
+        Me.Label23.Name = "Label23"
+        Me.Label23.Size = New System.Drawing.Size(22, 13)
+        Me.Label23.TabIndex = 64
+        Me.Label23.Text = "0.0"
+        Me.Label23.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'Label25
+        '
+        Me.Label25.AutoSize = True
+        Me.Label25.Location = New System.Drawing.Point(38, 86)
+        Me.Label25.Name = "Label25"
+        Me.Label25.Size = New System.Drawing.Size(103, 13)
+        Me.Label25.TabIndex = 63
+        Me.Label25.Text = "UPPER TEMP CAL:"
+        Me.Label25.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'Label27
+        '
+        Me.Label27.AutoSize = True
+        Me.Label27.Location = New System.Drawing.Point(35, 202)
+        Me.Label27.Name = "Label27"
+        Me.Label27.Size = New System.Drawing.Size(106, 13)
+        Me.Label27.TabIndex = 65
+        Me.Label27.Text = "LOWER TEMP CAL:"
+        Me.Label27.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'Label28
+        '
+        Me.Label28.AutoSize = True
+        Me.Label28.Location = New System.Drawing.Point(147, 202)
+        Me.Label28.Name = "Label28"
+        Me.Label28.Size = New System.Drawing.Size(22, 13)
+        Me.Label28.TabIndex = 66
+        Me.Label28.Text = "0.0"
+        Me.Label28.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
         'SETTINGS
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(552, 340)
+        Me.Controls.Add(Me.Label28)
+        Me.Controls.Add(Me.Label27)
+        Me.Controls.Add(Me.Label23)
+        Me.Controls.Add(Me.Label25)
         Me.Controls.Add(Me.Button5)
         Me.Controls.Add(Me.Button4)
         Me.Controls.Add(Me.NumericUpDown2)
@@ -458,4 +512,8 @@ Partial Class SETTINGS
     Friend WithEvents NumericUpDown2 As NumericUpDown
     Friend WithEvents Button4 As Button
     Friend WithEvents Button5 As Button
+    Friend WithEvents Label23 As Label
+    Friend WithEvents Label25 As Label
+    Friend WithEvents Label27 As Label
+    Friend WithEvents Label28 As Label
 End Class

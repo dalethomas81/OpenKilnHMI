@@ -33,8 +33,8 @@ Partial Class MAIN
         Me.ToolStripStatusLabel1 = New System.Windows.Forms.ToolStripStatusLabel()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.Label8 = New System.Windows.Forms.Label()
-        Me.Label9 = New System.Windows.Forms.Label()
         Me.Label10 = New System.Windows.Forms.Label()
+        Me.Label9 = New System.Windows.Forms.Label()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.Label12 = New System.Windows.Forms.Label()
         Me.Label13 = New System.Windows.Forms.Label()
@@ -126,8 +126,8 @@ Partial Class MAIN
         '
         Me.GroupBox1.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.GroupBox1.Controls.Add(Me.Label8)
-        Me.GroupBox1.Controls.Add(Me.Label9)
         Me.GroupBox1.Controls.Add(Me.Label10)
+        Me.GroupBox1.Controls.Add(Me.Label9)
         Me.GroupBox1.Controls.Add(Me.Label11)
         Me.GroupBox1.Controls.Add(Me.Label12)
         Me.GroupBox1.Controls.Add(Me.Label13)
@@ -141,7 +141,7 @@ Partial Class MAIN
         Me.GroupBox1.Controls.Add(Me.Label1)
         Me.GroupBox1.Location = New System.Drawing.Point(350, 12)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(222, 117)
+        Me.GroupBox1.Size = New System.Drawing.Size(222, 148)
         Me.GroupBox1.TabIndex = 3
         Me.GroupBox1.TabStop = False
         '
@@ -155,6 +155,16 @@ Partial Class MAIN
         Me.Label8.Text = "STATE"
         Me.Label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Location = New System.Drawing.Point(100, 92)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(22, 13)
+        Me.Label10.TabIndex = 17
+        Me.Label10.Text = "0.0"
+        Me.Label10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
         'Label9
         '
         Me.Label9.AutoSize = True
@@ -165,20 +175,10 @@ Partial Class MAIN
         Me.Label9.Text = "hh:mm:ss"
         Me.Label9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
-        'Label10
-        '
-        Me.Label10.AutoSize = True
-        Me.Label10.Location = New System.Drawing.Point(100, 68)
-        Me.Label10.Name = "Label10"
-        Me.Label10.Size = New System.Drawing.Size(22, 13)
-        Me.Label10.TabIndex = 17
-        Me.Label10.Text = "0.0"
-        Me.Label10.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        '
         'Label11
         '
         Me.Label11.AutoSize = True
-        Me.Label11.Location = New System.Drawing.Point(100, 94)
+        Me.Label11.Location = New System.Drawing.Point(100, 118)
         Me.Label11.Name = "Label11"
         Me.Label11.Size = New System.Drawing.Size(22, 13)
         Me.Label11.TabIndex = 16
@@ -198,7 +198,7 @@ Partial Class MAIN
         'Label13
         '
         Me.Label13.AutoSize = True
-        Me.Label13.Location = New System.Drawing.Point(100, 81)
+        Me.Label13.Location = New System.Drawing.Point(100, 105)
         Me.Label13.Name = "Label13"
         Me.Label13.Size = New System.Drawing.Size(22, 13)
         Me.Label13.TabIndex = 15
@@ -238,7 +238,7 @@ Partial Class MAIN
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(25, 68)
+        Me.Label5.Location = New System.Drawing.Point(25, 92)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(64, 13)
         Me.Label5.TabIndex = 10
@@ -248,7 +248,7 @@ Partial Class MAIN
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(6, 94)
+        Me.Label4.Location = New System.Drawing.Point(6, 118)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(83, 13)
         Me.Label4.TabIndex = 9
@@ -258,7 +258,7 @@ Partial Class MAIN
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(9, 81)
+        Me.Label3.Location = New System.Drawing.Point(9, 105)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(80, 13)
         Me.Label3.TabIndex = 2

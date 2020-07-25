@@ -61,11 +61,11 @@
     Public Const MB_STS_TEMP_01_RAW As Integer = 32
     Public Const MB_STS_TEMP_02_RAW As Integer = 34
 
-    Dim CoilsCount As Int16 = 10
+    Dim CoilsCount As Int16 = 15
     Dim CoilsIn(CoilsCount) As Boolean
     'Dim CoilsOut(CoilsCount) As Boolean
 
-    Dim InputStatusCount As Int16 = 10
+    Dim InputStatusCount As Int16 = 15
     Dim InputStatusIn(InputStatusCount) As Boolean
     'Dim InputStatusOut(InputStatusCount) As Boolean
 
@@ -490,8 +490,8 @@
 
         SETTINGS.CheckBox1.Checked = Kiln_01.Command.ThermalOverride
 
-        SETTINGS.Label3.Text = Math.Round(Kiln_01.TemperatureController.Upper.Temperature_raw, 2)
-        SETTINGS.Label4.Text = Math.Round(Kiln_01.TemperatureController.Lower.Temperature_raw, 2)
+        SETTINGS.Label3.Text = Math.Round(Kiln_01.TemperatureController.Upper.Temperature_raw, 2) & " F"
+        SETTINGS.Label4.Text = Math.Round(Kiln_01.TemperatureController.Lower.Temperature_raw, 2) & " F"
         SETTINGS.Label7.Text = Math.Round(Kiln_01.TemperatureController.Upper.Output, 2)
         SETTINGS.Label5.Text = Math.Round(Kiln_01.TemperatureController.Lower.Output, 2)
 
@@ -503,8 +503,11 @@
         SETTINGS.Label17.Text = Math.Round(Kiln_01.TemperatureController.Lower.I, 4)
         SETTINGS.Label15.Text = Math.Round(Kiln_01.TemperatureController.Lower.D, 4)
 
-        SETTINGS.NumericUpDown1.Value = Math.Round(Kiln_01.TemperatureController.Upper.Temperature_actual, 2)
-        SETTINGS.NumericUpDown2.Value = Math.Round(Kiln_01.TemperatureController.Lower.Temperature_actual, 2)
+        'SETTINGS.NumericUpDown1.Value = Math.Round(Kiln_01.TemperatureController.Upper.Temperature_actual, 2)
+        'SETTINGS.NumericUpDown2.Value = Math.Round(Kiln_01.TemperatureController.Lower.Temperature_actual, 2)
+
+        SETTINGS.Label23.Text = Math.Round(Kiln_01.TemperatureController.Upper.Temperature, 2) & " F"
+        SETTINGS.Label28.Text = Math.Round(Kiln_01.TemperatureController.Lower.Temperature, 2) & " F"
 
     End Sub
 
@@ -572,4 +575,8 @@
         SETTINGS.Show()
     End Sub
 
+    Private Sub Label10_Click(sender As Object, e As EventArgs) Handles Label10.Click
+        SETPOINT.NumericUpDown1.Value = Kiln_01.Command.Setpoint
+        SETPOINT.Show()
+    End Sub
 End Class
