@@ -1,6 +1,6 @@
 ﻿Public Class MAIN
     Private SerialPort = "COM18"
-    Private IPAddress = "192.168.0.253"
+    Private IPAddress = "192.168.0.21"
     'Private COM_MODE = "RTU"
     Private COM_MODE = "TCP"
     Public Const MAX_STRING_LENGTH = 15 ' 16 but leave room for '\0'
@@ -488,9 +488,11 @@
         If Kiln_01.Status.EepromWritten Then
             SCHEDULE.Label3.Visible = True
             PID_SETTINGS.Label4.Visible = True
+            TUNING.Label29.Visible = True
         Else
             SCHEDULE.Label3.Visible = False
             PID_SETTINGS.Label4.Visible = False
+            TUNING.Label29.Visible = False
         End If
 
         SCHEDULE.Label9.Text = Kiln_01.Schedule.Segment.Setpoint

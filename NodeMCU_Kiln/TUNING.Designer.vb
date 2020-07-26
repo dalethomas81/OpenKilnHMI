@@ -59,6 +59,7 @@ Partial Class TUNING
         Me.Label25 = New System.Windows.Forms.Label()
         Me.Label27 = New System.Windows.Forms.Label()
         Me.Label28 = New System.Windows.Forms.Label()
+        Me.Label29 = New System.Windows.Forms.Label()
         CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.NumericUpDown2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -427,11 +428,23 @@ Partial Class TUNING
         Me.Label28.Text = "0.0"
         Me.Label28.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         '
-        'SETTINGS
+        'Label29
+        '
+        Me.Label29.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
+        Me.Label29.AutoSize = True
+        Me.Label29.Location = New System.Drawing.Point(254, 121)
+        Me.Label29.Name = "Label29"
+        Me.Label29.Size = New System.Drawing.Size(46, 13)
+        Me.Label29.TabIndex = 67
+        Me.Label29.Text = "SAVED!"
+        Me.Label29.Visible = False
+        '
+        'TUNING
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(552, 340)
+        Me.Controls.Add(Me.Label29)
         Me.Controls.Add(Me.Label28)
         Me.Controls.Add(Me.Label27)
         Me.Controls.Add(Me.Label23)
@@ -469,7 +482,7 @@ Partial Class TUNING
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.CheckBox1)
         Me.Controls.Add(Me.Button6)
-        Me.Name = "SETTINGS"
+        Me.Name = "TUNING"
         Me.ShowIcon = False
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).EndInit()
@@ -516,4 +529,5 @@ Partial Class TUNING
     Friend WithEvents Label25 As Label
     Friend WithEvents Label27 As Label
     Friend WithEvents Label28 As Label
+    Friend WithEvents Label29 As Label
 End Class
