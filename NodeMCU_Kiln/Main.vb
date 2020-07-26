@@ -1,6 +1,6 @@
 ﻿Public Class MAIN
-    Private SerialPort = "COM25"
-    Private IPAddress = "192.168.0.21"
+    Private SerialPort = "COM18"
+    Private IPAddress = "192.168.0.253"
     'Private COM_MODE = "RTU"
     Private COM_MODE = "TCP"
     Public Const MAX_STRING_LENGTH = 16
@@ -355,8 +355,12 @@
         Kiln_01.Schedule.Segment.SoakTime = HoldingRegistersIn(MB_SCH_SEG_SOAK_TIME - 1)
         Kiln_01.Schedule.ChangeSelectedSegment = HoldingRegistersIn(MB_SCH_SEG_SELECTED - 1)
         Kiln_01.ChangeSelectedSchedule = HoldingRegistersIn(MB_SCH_SELECTED - 1)
-        Kiln_01.TemperatureController.Upper.Temperature_actual = HoldingRegistersIn(MB_CAL_TEMP_ACT_CH0 - 1)
-        Kiln_01.TemperatureController.Lower.Temperature_actual = HoldingRegistersIn(MB_CAL_TEMP_ACT_CH1 - 1)
+        TempRegArray(0) = HoldingRegistersIn(MB_CAL_TEMP_ACT_CH0 - 1)
+        TempRegArray(1) = HoldingRegistersIn(MB_CAL_TEMP_ACT_CH0 + 1 - 1)
+        Kiln_01.TemperatureController.Upper.Temperature_actual = EasyModbus.ModbusClient.ConvertRegistersToFloat(TempRegArray)
+        TempRegArray(0) = HoldingRegistersIn(MB_CAL_TEMP_ACT_CH1 - 1)
+        TempRegArray(1) = HoldingRegistersIn(MB_CAL_TEMP_ACT_CH1 + 1 - 1)
+        Kiln_01.TemperatureController.Lower.Temperature_actual = EasyModbus.ModbusClient.ConvertRegistersToFloat(TempRegArray)
         ' input registers
         Kiln_01.Status.Heartbeat = InputRegistersIn(MB_HEARTBEAT - 1)
         Kiln_01.Schedule.RemainingHours = InputRegistersIn(MB_STS_REMAINING_TIME_H - 1)
@@ -414,8 +418,13 @@
             ToolStripStatusLabel4.Text = "THERMAL RUNAWAY DETECTED"
             ToolStripStatusLabel4.BackColor = Color.Tomato
         Else
-            ToolStripStatusLabel4.Text = "THERMAL MONITORING OK"
-            ToolStripStatusLabel4.BackColor = Color.YellowGreen
+            If Kiln_01.Command.ThermalOverride Then
+                ToolStripStatusLabel4.Text = "THERMAL MONITORING DISABLED"
+                ToolStripStatusLabel4.BackColor = Color.DarkOrange
+            Else
+                ToolStripStatusLabel4.Text = "THERMAL MONITORING OK"
+                ToolStripStatusLabel4.BackColor = Color.YellowGreen
+            End If
         End If
         Select Case Kiln_01.Mode
             Case 1  ' auto
