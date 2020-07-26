@@ -7,11 +7,9 @@
     End Sub
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
-
-        For i As Integer = MAIN.MAX_STRING_LENGTH - TextBox1.Text.Length To 0 Step -1
-            TextBox1.Text = TextBox1.Text & vbNullString
-        Next
-
+        While TextBox1.Text.Length < MAIN.MAX_STRING_LENGTH
+            TextBox1.Text = TextBox1.Text & " "
+        End While
         MAIN.SendModbusMultipleHoldingRegisters(MAIN.MB_SCH_SEG_NAME, EasyModbus.ModbusClient.ConvertStringToRegisters(TextBox1.Text))
         MAIN.SendModbusMultipleHoldingRegisters(MAIN.MB_SCH_SEG_SETPOINT, EasyModbus.ModbusClient.ConvertFloatToRegisters(NumericUpDown1.Value))
         MAIN.SendModbusHoldingRegister(MAIN.MB_SCH_SEG_RAMP_RATE, NumericUpDown2.Value)
