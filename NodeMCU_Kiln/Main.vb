@@ -1,6 +1,6 @@
 ﻿Public Class MAIN
     Private SerialPort = "COM18"
-    Private IPAddress = "192.168.0.21"
+    Private IPAddress = "192.168.0.253"
     'Private COM_MODE = "RTU"
     Private COM_MODE = "TCP"
     Public Const MAX_STRING_LENGTH = 15 ' 16 but leave room for '\0'
