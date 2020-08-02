@@ -60,6 +60,10 @@ Partial Class TUNING
         Me.Label27 = New System.Windows.Forms.Label()
         Me.Label28 = New System.Windows.Forms.Label()
         Me.Label29 = New System.Windows.Forms.Label()
+        Me.Label30 = New System.Windows.Forms.Label()
+        Me.Label31 = New System.Windows.Forms.Label()
+        Me.Label32 = New System.Windows.Forms.Label()
+        Me.Label33 = New System.Windows.Forms.Label()
         CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.NumericUpDown2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -77,7 +81,7 @@ Partial Class TUNING
         'CheckBox1
         '
         Me.CheckBox1.AutoSize = True
-        Me.CheckBox1.Location = New System.Drawing.Point(257, 311)
+        Me.CheckBox1.Location = New System.Drawing.Point(170, 295)
         Me.CheckBox1.Name = "CheckBox1"
         Me.CheckBox1.Size = New System.Drawing.Size(210, 17)
         Me.CheckBox1.TabIndex = 29
@@ -439,11 +443,55 @@ Partial Class TUNING
         Me.Label29.Text = "SAVED!"
         Me.Label29.Visible = False
         '
+        'Label30
+        '
+        Me.Label30.AutoSize = True
+        Me.Label30.Location = New System.Drawing.Point(311, 279)
+        Me.Label30.Name = "Label30"
+        Me.Label30.Size = New System.Drawing.Size(22, 13)
+        Me.Label30.TabIndex = 71
+        Me.Label30.Text = "0.0"
+        Me.Label30.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'Label31
+        '
+        Me.Label31.AutoSize = True
+        Me.Label31.Location = New System.Drawing.Point(170, 279)
+        Me.Label31.Name = "Label31"
+        Me.Label31.Size = New System.Drawing.Size(135, 13)
+        Me.Label31.TabIndex = 70
+        Me.Label31.Text = "RUNAWAY RATE TIMER:"
+        Me.Label31.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'Label32
+        '
+        Me.Label32.AutoSize = True
+        Me.Label32.Location = New System.Drawing.Point(311, 265)
+        Me.Label32.Name = "Label32"
+        Me.Label32.Size = New System.Drawing.Size(22, 13)
+        Me.Label32.TabIndex = 69
+        Me.Label32.Text = "0.0"
+        Me.Label32.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'Label33
+        '
+        Me.Label33.AutoSize = True
+        Me.Label33.Location = New System.Drawing.Point(169, 265)
+        Me.Label33.Name = "Label33"
+        Me.Label33.Size = New System.Drawing.Size(136, 13)
+        Me.Label33.TabIndex = 68
+        Me.Label33.Text = "RUNAWAY TEMP TIMER:"
+        Me.Label33.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
         'TUNING
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(552, 340)
+        Me.Controls.Add(Me.Label30)
+        Me.Controls.Add(Me.Label31)
+        Me.Controls.Add(Me.Label32)
+        Me.Controls.Add(Me.Label33)
         Me.Controls.Add(Me.Label29)
         Me.Controls.Add(Me.Label28)
         Me.Controls.Add(Me.Label27)
@@ -530,4 +578,8 @@ Partial Class TUNING
     Friend WithEvents Label27 As Label
     Friend WithEvents Label28 As Label
     Friend WithEvents Label29 As Label
+    Friend WithEvents Label30 As Label
+    Friend WithEvents Label31 As Label
+    Friend WithEvents Label32 As Label
+    Friend WithEvents Label33 As Label
 End Class

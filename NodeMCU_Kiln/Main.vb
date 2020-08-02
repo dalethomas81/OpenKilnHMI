@@ -60,6 +60,8 @@
     Public Const MB_STS_SCHEDULE_NAME As Integer = 24
     Public Const MB_STS_TEMP_01_RAW As Integer = 32
     Public Const MB_STS_TEMP_02_RAW As Integer = 34
+    Public Const MB_STS_RUNAWAY_TEMP_T As Integer = 36
+    Public Const MB_STS_RUNAWAY_RATE_T As Integer = 38
 
     Dim CoilsCount As Int16 = 15
     Dim CoilsIn(CoilsCount) As Boolean
@@ -69,11 +71,11 @@
     Dim InputStatusIn(InputStatusCount) As Boolean
     'Dim InputStatusOut(InputStatusCount) As Boolean
 
-    Dim HoldingRegistersCount As Int16 = 50
+    Dim HoldingRegistersCount As Int16 = 42
     Dim HoldingRegistersIn(HoldingRegistersCount) As Integer
     'Dim HoldingRegistersOut(HoldingRegistersCount) As Integer
 
-    Dim InputRegistersCount As Int16 = 50
+    Dim InputRegistersCount As Int16 = 40
     Dim InputRegistersIn(InputRegistersCount) As Integer
     'Dim InputRegistersOut(InputRegistersCount) As Integer
 
@@ -122,6 +124,8 @@
         Dim SegmentState As Integer
         Dim SegmentName As String
         Dim ScheduleName As String
+        Dim RunawayTemperatureTimer As Integer
+        Dim RunawayRateTimer As Integer
     End Structure
 
     Structure Kiln_PID
@@ -389,6 +393,12 @@
         TempRegArray(0) = InputRegistersIn(MB_STS_TEMP_02_RAW - 1)
         TempRegArray(1) = InputRegistersIn(MB_STS_TEMP_02_RAW + 1 - 1)
         Kiln_01.TemperatureController.Lower.Temperature_raw = EasyModbus.ModbusClient.ConvertRegistersToFloat(TempRegArray)
+        TempRegArray(0) = InputRegistersIn(MB_STS_RUNAWAY_TEMP_T - 1)
+        TempRegArray(1) = InputRegistersIn(MB_STS_RUNAWAY_TEMP_T + 1 - 1)
+        Kiln_01.Status.RunawayTemperatureTimer = EasyModbus.ModbusClient.ConvertRegistersToInt(TempRegArray)
+        TempRegArray(0) = InputRegistersIn(MB_STS_RUNAWAY_RATE_T - 1)
+        TempRegArray(1) = InputRegistersIn(MB_STS_RUNAWAY_RATE_T + 1 - 1)
+        Kiln_01.Status.RunawayRateTimer = EasyModbus.ModbusClient.ConvertRegistersToInt(TempRegArray)
     End Sub
 
     Private Sub UpdateUI()
@@ -519,6 +529,9 @@
 
         TUNING.Label23.Text = Math.Round(Kiln_01.TemperatureController.Upper.Temperature, 2) & " F"
         TUNING.Label28.Text = Math.Round(Kiln_01.TemperatureController.Lower.Temperature, 2) & " F"
+
+        TUNING.Label32.Text = Math.Round(Kiln_01.Status.RunawayTemperatureTimer / 1000, 2) & " s"
+        TUNING.Label30.Text = Math.Round(Kiln_01.Status.RunawayRateTimer / 1000, 2) & " s"
 
     End Sub
 
