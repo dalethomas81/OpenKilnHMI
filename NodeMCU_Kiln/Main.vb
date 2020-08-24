@@ -1,8 +1,8 @@
 ﻿Public Class MAIN
     Private SerialPort = "COM18"
-    Private IPAddress = "192.168.0.21"
-    Private COM_MODE = "RTU"
-    'Private COM_MODE = "TCP"
+    Private IPAddress = "10.0.1.164"
+    'Private COM_MODE = "RTU"
+    Private COM_MODE = "TCP"
     Public Const MAX_STRING_LENGTH = 15 ' 16 but leave room for '\0'
     ' coils (RW) 
     Public Const MB_CMD_SELECT_SCHEDULE As Integer = 1
@@ -62,6 +62,8 @@
     Public Const MB_STS_TEMP_02_RAW As Integer = 34
     Public Const MB_STS_RUNAWAY_TEMP_T As Integer = 36
     Public Const MB_STS_RUNAWAY_RATE_T As Integer = 38
+    Public Const MB_STS_MEAS_RATE_CH0 As Integer = 40
+    Public Const MB_STS_MEAS_RATE_CH1 As Integer = 42
 
     Dim CoilsCount As Int16 = 15
     Dim CoilsIn(CoilsCount) As Boolean
@@ -75,7 +77,7 @@
     Dim HoldingRegistersIn(HoldingRegistersCount) As Integer
     'Dim HoldingRegistersOut(HoldingRegistersCount) As Integer
 
-    Dim InputRegistersCount As Int16 = 40
+    Dim InputRegistersCount As Int16 = 44
     Dim InputRegistersIn(InputRegistersCount) As Integer
     'Dim InputRegistersOut(InputRegistersCount) As Integer
 
@@ -132,6 +134,7 @@
         Dim Temperature As Double
         Dim Temperature_raw As Double
         Dim Temperature_actual As Double
+        Dim MeasuredRate As Double
         Dim Cal_Map_low As Boolean
         Dim Cal_Map_high As Boolean
         Dim Output As Single
@@ -399,6 +402,12 @@
         TempRegArray(0) = InputRegistersIn(MB_STS_RUNAWAY_RATE_T - 1)
         TempRegArray(1) = InputRegistersIn(MB_STS_RUNAWAY_RATE_T + 1 - 1)
         Kiln_01.Status.RunawayRateTimer = EasyModbus.ModbusClient.ConvertRegistersToInt(TempRegArray)
+        TempRegArray(0) = InputRegistersIn(MB_STS_MEAS_RATE_CH0 - 1)
+        TempRegArray(1) = InputRegistersIn(MB_STS_MEAS_RATE_CH0 + 1 - 1)
+        Kiln_01.TemperatureController.Upper.MeasuredRate = EasyModbus.ModbusClient.ConvertRegistersToFloat(TempRegArray)
+        TempRegArray(0) = InputRegistersIn(MB_STS_MEAS_RATE_CH1 - 1)
+        TempRegArray(1) = InputRegistersIn(MB_STS_MEAS_RATE_CH1 + 1 - 1)
+        Kiln_01.TemperatureController.Lower.MeasuredRate = EasyModbus.ModbusClient.ConvertRegistersToFloat(TempRegArray)
     End Sub
 
     Private Sub UpdateUI()
@@ -532,6 +541,9 @@
 
         TUNING.Label32.Text = Math.Round(Kiln_01.Status.RunawayTemperatureTimer / 1000, 2) & " s"
         TUNING.Label30.Text = Math.Round(Kiln_01.Status.RunawayRateTimer / 1000, 2) & " s"
+
+        TUNING.Label36.Text = Math.Round(Kiln_01.TemperatureController.Upper.MeasuredRate, 2) & " F/hr"
+        TUNING.Label34.Text = Math.Round(Kiln_01.TemperatureController.Lower.MeasuredRate, 2) & " F/hr"
 
     End Sub
 

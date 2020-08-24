@@ -64,6 +64,10 @@ Partial Class TUNING
         Me.Label31 = New System.Windows.Forms.Label()
         Me.Label32 = New System.Windows.Forms.Label()
         Me.Label33 = New System.Windows.Forms.Label()
+        Me.Label34 = New System.Windows.Forms.Label()
+        Me.Label35 = New System.Windows.Forms.Label()
+        Me.Label36 = New System.Windows.Forms.Label()
+        Me.Label37 = New System.Windows.Forms.Label()
         CType(Me.NumericUpDown1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.NumericUpDown2, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -71,7 +75,7 @@ Partial Class TUNING
         'Button6
         '
         Me.Button6.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.Button6.Location = New System.Drawing.Point(12, 275)
+        Me.Button6.Location = New System.Drawing.Point(12, 297)
         Me.Button6.Name = "Button6"
         Me.Button6.Size = New System.Drawing.Size(108, 53)
         Me.Button6.TabIndex = 28
@@ -81,7 +85,7 @@ Partial Class TUNING
         'CheckBox1
         '
         Me.CheckBox1.AutoSize = True
-        Me.CheckBox1.Location = New System.Drawing.Point(170, 295)
+        Me.CheckBox1.Location = New System.Drawing.Point(172, 333)
         Me.CheckBox1.Name = "CheckBox1"
         Me.CheckBox1.Size = New System.Drawing.Size(210, 17)
         Me.CheckBox1.TabIndex = 29
@@ -305,7 +309,7 @@ Partial Class TUNING
         'Button1
         '
         Me.Button1.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.Button1.Location = New System.Drawing.Point(386, 212)
+        Me.Button1.Location = New System.Drawing.Point(386, 234)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(108, 53)
         Me.Button1.TabIndex = 52
@@ -315,7 +319,7 @@ Partial Class TUNING
         'Button2
         '
         Me.Button2.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.Button2.Location = New System.Drawing.Point(233, 25)
+        Me.Button2.Location = New System.Drawing.Point(234, 32)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(83, 41)
         Me.Button2.TabIndex = 53
@@ -345,7 +349,7 @@ Partial Class TUNING
         'Button3
         '
         Me.Button3.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.Button3.Location = New System.Drawing.Point(233, 141)
+        Me.Button3.Location = New System.Drawing.Point(234, 148)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(83, 41)
         Me.Button3.TabIndex = 58
@@ -375,7 +379,7 @@ Partial Class TUNING
         'Button4
         '
         Me.Button4.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.Button4.Location = New System.Drawing.Point(233, 72)
+        Me.Button4.Location = New System.Drawing.Point(234, 79)
         Me.Button4.Name = "Button4"
         Me.Button4.Size = New System.Drawing.Size(83, 41)
         Me.Button4.TabIndex = 61
@@ -385,7 +389,7 @@ Partial Class TUNING
         'Button5
         '
         Me.Button5.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
-        Me.Button5.Location = New System.Drawing.Point(233, 188)
+        Me.Button5.Location = New System.Drawing.Point(234, 195)
         Me.Button5.Name = "Button5"
         Me.Button5.Size = New System.Drawing.Size(83, 41)
         Me.Button5.TabIndex = 62
@@ -436,7 +440,7 @@ Partial Class TUNING
         '
         Me.Label29.Anchor = CType((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left), System.Windows.Forms.AnchorStyles)
         Me.Label29.AutoSize = True
-        Me.Label29.Location = New System.Drawing.Point(254, 121)
+        Me.Label29.Location = New System.Drawing.Point(255, 128)
         Me.Label29.Name = "Label29"
         Me.Label29.Size = New System.Drawing.Size(46, 13)
         Me.Label29.TabIndex = 67
@@ -446,7 +450,7 @@ Partial Class TUNING
         'Label30
         '
         Me.Label30.AutoSize = True
-        Me.Label30.Location = New System.Drawing.Point(311, 279)
+        Me.Label30.Location = New System.Drawing.Point(323, 284)
         Me.Label30.Name = "Label30"
         Me.Label30.Size = New System.Drawing.Size(22, 13)
         Me.Label30.TabIndex = 71
@@ -456,7 +460,7 @@ Partial Class TUNING
         'Label31
         '
         Me.Label31.AutoSize = True
-        Me.Label31.Location = New System.Drawing.Point(170, 279)
+        Me.Label31.Location = New System.Drawing.Point(182, 284)
         Me.Label31.Name = "Label31"
         Me.Label31.Size = New System.Drawing.Size(135, 13)
         Me.Label31.TabIndex = 70
@@ -466,7 +470,7 @@ Partial Class TUNING
         'Label32
         '
         Me.Label32.AutoSize = True
-        Me.Label32.Location = New System.Drawing.Point(311, 265)
+        Me.Label32.Location = New System.Drawing.Point(323, 270)
         Me.Label32.Name = "Label32"
         Me.Label32.Size = New System.Drawing.Size(22, 13)
         Me.Label32.TabIndex = 69
@@ -476,18 +480,62 @@ Partial Class TUNING
         'Label33
         '
         Me.Label33.AutoSize = True
-        Me.Label33.Location = New System.Drawing.Point(169, 265)
+        Me.Label33.Location = New System.Drawing.Point(181, 270)
         Me.Label33.Name = "Label33"
         Me.Label33.Size = New System.Drawing.Size(136, 13)
         Me.Label33.TabIndex = 68
         Me.Label33.Text = "RUNAWAY TEMP TIMER:"
         Me.Label33.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
+        'Label34
+        '
+        Me.Label34.AutoSize = True
+        Me.Label34.Location = New System.Drawing.Point(323, 311)
+        Me.Label34.Name = "Label34"
+        Me.Label34.Size = New System.Drawing.Size(22, 13)
+        Me.Label34.TabIndex = 75
+        Me.Label34.Text = "0.0"
+        Me.Label34.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'Label35
+        '
+        Me.Label35.AutoSize = True
+        Me.Label35.Location = New System.Drawing.Point(171, 310)
+        Me.Label35.Name = "Label35"
+        Me.Label35.Size = New System.Drawing.Size(146, 13)
+        Me.Label35.TabIndex = 74
+        Me.Label35.Text = "MEASURED RATE LOWER:"
+        Me.Label35.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'Label36
+        '
+        Me.Label36.AutoSize = True
+        Me.Label36.Location = New System.Drawing.Point(323, 297)
+        Me.Label36.Name = "Label36"
+        Me.Label36.Size = New System.Drawing.Size(22, 13)
+        Me.Label36.TabIndex = 73
+        Me.Label36.Text = "0.0"
+        Me.Label36.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'Label37
+        '
+        Me.Label37.AutoSize = True
+        Me.Label37.Location = New System.Drawing.Point(174, 297)
+        Me.Label37.Name = "Label37"
+        Me.Label37.Size = New System.Drawing.Size(143, 13)
+        Me.Label37.TabIndex = 72
+        Me.Label37.Text = "MEASURED RATE UPPER:"
+        Me.Label37.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
         'TUNING
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(552, 340)
+        Me.ClientSize = New System.Drawing.Size(552, 362)
+        Me.Controls.Add(Me.Label34)
+        Me.Controls.Add(Me.Label35)
+        Me.Controls.Add(Me.Label36)
+        Me.Controls.Add(Me.Label37)
         Me.Controls.Add(Me.Label30)
         Me.Controls.Add(Me.Label31)
         Me.Controls.Add(Me.Label32)
@@ -582,4 +630,8 @@ Partial Class TUNING
     Friend WithEvents Label31 As Label
     Friend WithEvents Label32 As Label
     Friend WithEvents Label33 As Label
+    Friend WithEvents Label34 As Label
+    Friend WithEvents Label35 As Label
+    Friend WithEvents Label36 As Label
+    Friend WithEvents Label37 As Label
 End Class

@@ -51,4 +51,5 @@
         MAIN.SendModbusCoil(MAIN.MB_CMD_CAL_CH1_LOW, True)
         MAIN.SendModbusCoil(MAIN.MB_CMD_WRITE_EEPROM, True)
     End Sub
+
 End Class
