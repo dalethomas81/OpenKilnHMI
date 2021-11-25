@@ -5,3 +5,12 @@ This is an HMI written in VB.NET for the OpenKiln project. It's messy but it get
 More details to come later but for now please feel free to ramble around the code.
 
 The OpenKiln project can be found [here](https://github.com/dalethomas81/OpenKiln)
+
+Main Screen  
+![Main](/Pictures/screenshot-main.png)  
+
+Schedules/Recipe Screen:  
+![Main](/Pictures/screenshot-schedules.png)  
+
+Settings Screen:  
+![Main](/Pictures/screenshot-settings.png)  
